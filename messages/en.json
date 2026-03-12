@@ -1,5 +1,7 @@
 {
   "Home": {
-    "title": "Hello World"
+    "tag": "Movies",
+    "title": "Discover the world of the best movies.",
+    "description": "Find the perfect movie for any mood. Thrilling plots, real stories, and unforgettable emotions await you in our selection."
   }
 }
