@@ -3,5 +3,11 @@
     "tag": "Filme",
     "title": "Entdecken Sie die Welt der besten Filme.",
     "description": "Finden Sie den perfekten Film für jede Stimmung. Spannende Handlungen, wahre Geschichten und unvergessliche Emotionen warten in unserer Auswahl auf Sie."
+  },
+  "Metadata": {
+    "layout": {
+      "title": "Film App",
+      "description": "Jetzt laufende Filme entdecken"
+    }
   }
 }
