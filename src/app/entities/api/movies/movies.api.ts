@@ -35,5 +35,5 @@ export const getMovieById = async (movieId: string): Promise<MovieResponse> => {
 
   const movie = await res.json();
 
-  return { results: movie };
+  return { success: res.ok, results: movie };
 };

@@ -37,5 +37,11 @@
     "language": "Sprache",
     "imdbId": "IMDB-ID",
     "production": "Produktion"
+  },
+
+  "NotFoundMovie": {
+    "label": "Film nicht gefunden",
+    "description": "Die Rolle, die Sie suchen, fehlt in unserem Archiv.",
+    "back": "Zurück zum Katalog"
   }
 }

@@ -37,5 +37,10 @@
     "language": "Language",
     "imdbId": "IMDB ID",
     "production": "Production"
+  },
+  "NotFoundMovie": {
+    "label": "Film not found",
+    "description": "The reel you're looking for has gone missing from our archive.",
+    "back": "Back to catalogue"
   }
 }

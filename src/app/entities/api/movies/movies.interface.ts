@@ -8,5 +8,6 @@ export interface MoviesResponse {
 }
 
 export interface MovieResponse {
+  success: boolean;
   results: Movie;
 }
