@@ -1,9 +1,21 @@
+import { getMovies } from "@/app/entities/api/movies";
 import { Badge } from "@/app/shared/ui";
 import { MovieList } from "@/app/widgets/movie-list";
+import { getQueryClient } from "@/pkg";
 import { getTranslations } from "next-intl/server";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 export const HomeModule = async () => {
   const t = await getTranslations("Home");
+
+  const queryClient = getQueryClient();
+
+  queryClient.prefetchQuery({
+    queryKey: ["movies"],
+    queryFn: getMovies,
+  });
+
+  const dehydratedState = dehydrate(queryClient);
   return (
     <main className="py-8 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-8">
@@ -20,8 +32,9 @@ export const HomeModule = async () => {
             {t("description")}
           </p>
         </div>
-
-        <MovieList />
+        <HydrationBoundary state={dehydratedState}>
+          <MovieList />
+        </HydrationBoundary>
       </div>
     </main>
   );
