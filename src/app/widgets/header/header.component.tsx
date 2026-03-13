@@ -2,6 +2,9 @@ import { Logo } from "@/app/shared/assets";
 import { Link } from "@/i18n/routing";
 import { navigationData } from "./header.constant";
 import { getTranslations } from "next-intl/server";
+import { LanguageDropdown } from "@/app/features/language-switcher";
+import { Button } from "@/app/shared/ui";
+import { LanguagesIcon } from "lucide-react";
 
 export const Header = async () => {
   const t = await getTranslations("Header");
@@ -24,6 +27,15 @@ export const Header = async () => {
         </div>
 
         <div className="flex items-center gap-6">
+          <LanguageDropdown
+            defaultOpen
+            align="center"
+            trigger={
+              <Button variant="outline" size="icon">
+                <LanguagesIcon />
+              </Button>
+            }
+          />
           <Link className="bg-foreground px-2 rounded-2xl" href="/sign-up">
             <span className="text-background font-medium text-xs">
               {t("button")}
