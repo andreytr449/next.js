@@ -43,5 +43,10 @@
     "label": "Film nicht gefunden",
     "description": "Die Rolle, die Sie suchen, fehlt in unserem Archiv.",
     "back": "Zurück zum Katalog"
+  },
+  "Header": {
+    "home": "Startseite",
+    "items": "Artikel",
+    "button": "Registrieren"
   }
 }

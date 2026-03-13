@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Providers } from "@/app/shared/ui";
+import { Header } from "@/app/widgets/header";
 
 export async function generateMetadata({
   params,
@@ -34,7 +35,10 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      <Providers>{children}</Providers>
+      <Providers>
+        <Header />
+        {children}
+      </Providers>
     </NextIntlClientProvider>
   );
 }
