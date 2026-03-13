@@ -15,5 +15,27 @@
     "subtitle": "Something went wrong",
     "description": "The page you're looking for isn't found, we suggest you back to home.",
     "button": "Back to home page"
+  },
+  "MovieHero": {
+    "posterAlt": "Poster",
+    "runtime": "runtime"
+  },
+  "MovieBody": {
+    "overview": "Overview",
+    "rating": "Rating",
+    "votes": "votes",
+    "budget": "Budget",
+    "productionCost": "Production cost",
+    "revenue": "Revenue",
+    "boxOffice": "Box office",
+    "popularity": "Popularity",
+    "trendingIndex": "Trending index",
+    "details": "Details",
+    "releaseDate": "Release date",
+    "runtime": "Runtime",
+    "status": "Status",
+    "language": "Language",
+    "imdbId": "IMDB ID",
+    "production": "Production"
   }
 }

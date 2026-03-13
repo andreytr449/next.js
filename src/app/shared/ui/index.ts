@@ -12,3 +12,5 @@ export { Button, buttonVariants } from "./button";
 export { Providers } from "./providers";
 export { MovieCardSkeleton, MovieListSkeleton } from "./skeleton";
 export { ErrorMessage } from "./error-message";
+export { StatCard } from "./stat-card";
+export { InfoRow } from "./info-row";

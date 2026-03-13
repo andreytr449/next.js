@@ -17,7 +17,7 @@ export const MovieCard = ({
   vote_count,
   original_language,
 }: Movie) => {
-  const movieLink = `/movies/${id}`;
+  const movieLink = `/items/${id}`;
   const releaseYear = release_date?.slice(0, 4);
   const rating = vote_average?.toFixed(1);
 

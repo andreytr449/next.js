@@ -4,7 +4,6 @@ export interface Movie {
   original_title: string;
   overview: string;
   poster_path: string;
-  backdrop_path: string;
   release_date: string;
   vote_average: number;
   vote_count: number;
@@ -13,11 +12,15 @@ export interface Movie {
   original_language: string;
   adult: boolean;
   video: boolean;
-}
 
-export interface MoviesResponse {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
+  tagline: string;
+  backdrop_path: string;
+  poster: string;
+  genres: { id: number; name: string }[];
+  runtime: string;
+  status: string;
+  language: string;
+  origin: string[];
+  imdb_id: string;
+  production_companies: { name: string; origin_country: string }[];
 }

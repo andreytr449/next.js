@@ -2,7 +2,7 @@
 
 import { serverEnv } from "@/config/env";
 import { getLocale } from "next-intl/server";
-import { MoviesResponse } from "@/app/entities/models";
+import { MovieResponse, MoviesResponse } from "./movies.interface";
 
 const localeToLanguage: Record<string, string> = {
   en: "en-US",
@@ -19,4 +19,21 @@ export const getMovies = async (): Promise<MoviesResponse> => {
   );
 
   return await res.json();
+};
+
+export const getMovieById = async (movieId: string): Promise<MovieResponse> => {
+  const { TMDB_API_KEY } = serverEnv;
+  const locale = await getLocale();
+  const language = localeToLanguage[locale] ?? "en-US";
+
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}?language=${language}&api_key=${TMDB_API_KEY}`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  const movie = await res.json();
+
+  return { results: movie };
 };
