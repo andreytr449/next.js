@@ -9,5 +9,11 @@
       "title": "Film App",
       "description": "Jetzt laufende Filme entdecken"
     }
+  },
+  "NotFound": {
+    "title": "Hoppla!",
+    "subtitle": "Etwas ist schiefgelaufen",
+    "description": "Die gesuchte Seite wurde nicht gefunden. Wir empfehlen dir, zur Startseite zurückzukehren.",
+    "button": "Zurück zur Startseite"
   }
 }
