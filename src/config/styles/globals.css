@@ -127,3 +127,10 @@
     @apply font-sans;
   }
 }
+.text-404 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(120px, 20vw, 220px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+}

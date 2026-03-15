@@ -12,7 +12,7 @@ export default function proxy(req: NextRequest) {
     /^[a-z]{2}$/.test(segment) && !routing.locales.includes(segment as never);
 
   if (isUnknownLocale) {
-    return NextResponse.redirect(new URL("/", req.url));
+    return NextResponse.redirect(new URL("/en", req.url));
   }
 
   return handleI18n(req);

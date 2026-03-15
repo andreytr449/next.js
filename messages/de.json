@@ -15,5 +15,33 @@
     "subtitle": "Etwas ist schiefgelaufen",
     "description": "Die gesuchte Seite wurde nicht gefunden. Wir empfehlen dir, zur Startseite zurückzukehren.",
     "button": "Zurück zur Startseite"
+  },
+  "MovieHero": {
+    "posterAlt": "Filmplakat",
+    "runtime": "Laufzeit"
+  },
+  "MovieBody": {
+    "overview": "Übersicht",
+    "rating": "Bewertung",
+    "votes": "Stimmen",
+    "budget": "Budget",
+    "productionCost": "Produktionskosten",
+    "revenue": "Einnahmen",
+    "boxOffice": "Kasseneinnahmen",
+    "popularity": "Beliebtheit",
+    "trendingIndex": "Trendindex",
+    "details": "Details",
+    "releaseDate": "Erscheinungsdatum",
+    "runtime": "Laufzeit",
+    "status": "Status",
+    "language": "Sprache",
+    "imdbId": "IMDB-ID",
+    "production": "Produktion"
+  },
+
+  "NotFoundMovie": {
+    "label": "Film nicht gefunden",
+    "description": "Die Rolle, die Sie suchen, fehlt in unserem Archiv.",
+    "back": "Zurück zum Katalog"
   }
 }
