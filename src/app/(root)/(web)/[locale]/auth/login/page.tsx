@@ -1,3 +1,5 @@
+import { LoginModule } from "@/app/modules/login";
+
 export default function LoginPage() {
-  return <p>login</p>;
+  return <LoginModule />;
 }
