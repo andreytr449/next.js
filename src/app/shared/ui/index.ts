@@ -31,3 +31,6 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "./dropdown-menu";
+export { Label } from "./label";
+export { Input } from "./input";
+export { Separator } from "./separator";

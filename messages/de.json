@@ -48,5 +48,13 @@
     "home": "Startseite",
     "items": "Artikel",
     "button": "Registrieren"
+  },
+  "Auth": {
+    "register": {
+      "title": "Registrieren",
+      "description": "Entdecke, verfolge und genieße Filme, die du liebst.",
+      "alreadyHaveAccount": "Bereits ein Konto?",
+      "signInInstead": "Stattdessen anmelden"
+    }
   }
 }

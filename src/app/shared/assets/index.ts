@@ -1,1 +1,1 @@
-export { RatingCircle, Logo } from "./icon";
+export { RatingCircle, Logo, AuthBackgroundShape } from "./icon";

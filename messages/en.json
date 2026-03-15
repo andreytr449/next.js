@@ -47,5 +47,13 @@
     "home": "Home",
     "items": "Items",
     "button": "Sign up"
+  },
+  "Auth": {
+    "register": {
+      "title": "Sign Up",
+      "description": "Discover, track, and enjoy movies you love.",
+      "alreadyHaveAccount": "Already have an account?",
+      "signInInstead": "Sign in instead"
+    }
   }
 }

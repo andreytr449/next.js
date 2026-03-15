@@ -28,7 +28,6 @@ export const Header = async () => {
 
         <div className="flex items-center gap-6">
           <LanguageDropdown
-            defaultOpen
             align="center"
             trigger={
               <Button variant="outline" size="icon">
@@ -36,7 +35,7 @@ export const Header = async () => {
               </Button>
             }
           />
-          <Link className="bg-foreground px-2 rounded-2xl" href="/sign-up">
+          <Link className="bg-foreground px-2 rounded-2xl" href="/auth/login">
             <span className="text-background font-medium text-xs">
               {t("button")}
             </span>
