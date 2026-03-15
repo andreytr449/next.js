@@ -1,5 +1,19 @@
 {
   "Home": {
-    "title": "Hallo Welt"
+    "tag": "Filme",
+    "title": "Entdecken Sie die Welt der besten Filme.",
+    "description": "Finden Sie den perfekten Film für jede Stimmung. Spannende Handlungen, wahre Geschichten und unvergessliche Emotionen warten in unserer Auswahl auf Sie."
+  },
+  "Metadata": {
+    "layout": {
+      "title": "Film App",
+      "description": "Jetzt laufende Filme entdecken"
+    }
+  },
+  "NotFound": {
+    "title": "Hoppla!",
+    "subtitle": "Etwas ist schiefgelaufen",
+    "description": "Die gesuchte Seite wurde nicht gefunden. Wir empfehlen dir, zur Startseite zurückzukehren.",
+    "button": "Zurück zur Startseite"
   }
 }
