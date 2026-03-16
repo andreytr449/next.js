@@ -14,3 +14,24 @@ export { MovieCardSkeleton, MovieListSkeleton } from "./skeleton";
 export { ErrorMessage } from "./error-message";
 export { StatCard } from "./stat-card";
 export { InfoRow } from "./info-row";
+export {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
+export { Label } from "./label";
+export { Input } from "./input";
+export { Separator } from "./separator";
+export { FormErrorText } from "./form-error-text";

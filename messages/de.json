@@ -43,5 +43,42 @@
     "label": "Film nicht gefunden",
     "description": "Die Rolle, die Sie suchen, fehlt in unserem Archiv.",
     "back": "Zurück zum Katalog"
+  },
+  "Header": {
+    "home": "Startseite",
+    "items": "Artikel",
+    "button": "Registrieren",
+    "logout-btn": "Abmelden"
+  },
+  "Auth": {
+    "register": {
+      "title": "Registrieren",
+      "description": "Entdecke, verfolge und genieße Filme, die du liebst.",
+      "alreadyHaveAccount": "Bereits ein Konto?",
+      "signInInstead": "Stattdessen anmelden"
+    },
+    "login": {
+      "title": "Willkommen zurück",
+      "description": "Melde dich an und setze deine Filmreise fort.",
+      "noAccount": "Noch kein Konto?",
+      "signUpInstead": "Jetzt registrieren"
+    },
+    "form": {
+      "email": "E-Mail-Adresse",
+      "email-placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+      "username": "Benutzername",
+      "username-placeholder": "Geben Sie Ihren Benutzernamen ein",
+      "password": "Passwort",
+      "confirm-password": "Passwort bestätigen",
+      "register-btn": "Konto erstellen",
+      "login-btn": "Anmelden",
+      "loading-btn": "Laden....",
+      "validation": {
+        "invalidEmail": "Ungültige E-Mail-Adresse.",
+        "minLength": "Mindestens {min} Zeichen.",
+        "maxLength": "Höchstens {max} Zeichen.",
+        "passwordsDoNotMatch": "Passwörter stimmen nicht überein."
+      }
+    }
   }
 }

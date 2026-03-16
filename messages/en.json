@@ -42,5 +42,42 @@
     "label": "Film not found",
     "description": "The reel you're looking for has gone missing from our archive.",
     "back": "Back to catalogue"
+  },
+  "Header": {
+    "home": "Home",
+    "items": "Items",
+    "button": "Sign up",
+    "logout-btn": "Logout"
+  },
+  "Auth": {
+    "register": {
+      "title": "Sign Up",
+      "description": "Discover, track, and enjoy movies you love.",
+      "alreadyHaveAccount": "Already have an account?",
+      "signInInstead": "Sign in instead"
+    },
+    "login": {
+      "title": "Welcome back",
+      "description": "Sign in to continue your movie journey.",
+      "noAccount": "Don't have an account?",
+      "signUpInstead": "Create one now"
+    },
+    "form": {
+      "email": "Email address",
+      "email-placeholder": "Enter your email address",
+      "username": "Username",
+      "username-placeholder": "Enter your username",
+      "password": "Password",
+      "confirm-password": "Confirm Password",
+      "register-btn": "Create account",
+      "login-btn": "Login",
+      "loading-btn": "Loading...",
+      "validation": {
+        "invalidEmail": "Invalid email address.",
+        "minLength": "Must be at least {min} characters.",
+        "maxLength": "Must be at most {max} characters.",
+        "passwordsDoNotMatch": "Passwords do not match."
+      }
+    }
   }
 }
