@@ -7,6 +7,23 @@ import { Movie } from "@/app/entities/models";
 
 const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
+type MovieCardProps = Pick<
+  Movie,
+  | "id"
+  | "title"
+  | "overview"
+  | "poster_path"
+  | "release_date"
+  | "vote_average"
+  | "vote_count"
+  | "original_language"
+  | "adult"
+  | "backdrop_path"
+  | "genre_ids"
+  | "popularity"
+  | "video"
+>;
+
 export const MovieCard = ({
   id,
   title,
@@ -16,7 +33,7 @@ export const MovieCard = ({
   vote_average,
   vote_count,
   original_language,
-}: Movie) => {
+}: MovieCardProps) => {
   const movieLink = `/items/${id}`;
   const releaseYear = release_date?.slice(0, 4);
   const rating = vote_average?.toFixed(1);

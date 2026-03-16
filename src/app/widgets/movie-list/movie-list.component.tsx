@@ -22,7 +22,6 @@ export const MovieList = () => {
             vote_count={movie.vote_count}
             id={movie.id}
             original_language={movie.original_language}
-            original_title={movie.original_title}
             overview={movie.overview}
             popularity={movie.popularity}
             poster_path={movie.poster_path}

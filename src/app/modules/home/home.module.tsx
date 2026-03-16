@@ -17,7 +17,7 @@ export const HomeModule = async () => {
         <h1 className="text-5xl font-medium text-[#ededed] leading-tight tracking-tighter max-w-2xl mb-5">
           {t("title")}
           <br />
-          <span className="text-[#888]">Без зайвого шуму.</span>
+          <span className="text-[#888]"> {t("subtitle")}</span>
         </h1>
 
         <p className="text-[#666] text-base max-w-sm leading-relaxed font-light mb-10">
