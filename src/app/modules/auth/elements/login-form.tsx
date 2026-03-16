@@ -25,7 +25,7 @@ export const LoginForm = () => {
   const errors = formState.errors;
   const onSubmit = (data: LoginFormData) => {
     setIsLoading(true);
-    login({ name: "John", email: data.email }, "user-token");
+    login({ email: data.email }, "user-token");
     setIsLoading(false);
     router.push("/en/items");
   };
