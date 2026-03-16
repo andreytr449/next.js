@@ -1,5 +1,5 @@
 {
-  "Home": {
+  "Items": {
     "tag": "Movies",
     "title": "Discover the world of the best movies.",
     "description": "Find the perfect movie for any mood. Thrilling plots, real stories, and unforgettable emotions await you in our selection."
@@ -79,5 +79,12 @@
         "passwordsDoNotMatch": "Passwords do not match."
       }
     }
+  },
+  "Home": {
+    "badge": "New releases on the site",
+    "title": "Your film library.",
+    "subtitle": "Without the noise.",
+    "description": "Find movies, check ratings and discover new films — fast and simple.",
+    "button": "Browse films"
   }
 }

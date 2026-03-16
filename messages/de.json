@@ -1,5 +1,5 @@
 {
-  "Home": {
+  "Items": {
     "tag": "Filme",
     "title": "Entdecken Sie die Welt der besten Filme.",
     "description": "Finden Sie den perfekten Film für jede Stimmung. Spannende Handlungen, wahre Geschichten und unvergessliche Emotionen warten in unserer Auswahl auf Sie."
@@ -80,5 +80,12 @@
         "passwordsDoNotMatch": "Passwörter stimmen nicht überein."
       }
     }
+  },
+  "Home": {
+    "badge": "Neue Filme sind jetzt verfügbar",
+    "title": "Deine Filmsammlung.",
+    "subtitle": "Ohne den Lärm.",
+    "description": "Finde Filme, sieh dir Bewertungen an und entdecke neue Streifen — schnell und einfach.",
+    "button": "Filme durchsuchen"
   }
 }
