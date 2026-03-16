@@ -32,7 +32,11 @@ export const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
 
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
-      <DropdownMenuTrigger suppressHydrationWarning asChild>
+      <DropdownMenuTrigger
+        suppressHydrationWarning
+        asChild
+        data-testid="language-switcher"
+      >
         {trigger}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-50" align={align || "end"}>
@@ -41,6 +45,7 @@ export const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
             <DropdownMenuRadioItem
               key={locale}
               value={locale}
+              data-testid={`lang-${locale}`}
               className="data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground pl-2 text-base [&>span]:hidden"
             >
               {label}
