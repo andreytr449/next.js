@@ -1,7 +1,7 @@
-import { HomeModule } from "@/app/modules/home";
+import { MoviesModule } from "@/app/modules/movies";
 
 export const revalidate = 3600;
 
 export default async function Home() {
-  return <HomeModule />;
+  return <MoviesModule />;
 }

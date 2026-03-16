@@ -5,7 +5,7 @@ import { getQueryClient } from "@/pkg";
 import { getTranslations } from "next-intl/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-export const HomeModule = async () => {
+export const MoviesModule = async () => {
   const t = await getTranslations("Home");
 
   const queryClient = getQueryClient();
