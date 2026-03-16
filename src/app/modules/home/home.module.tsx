@@ -1,40 +1,37 @@
-import { getMovies } from "@/app/entities/api/movies";
-import { Badge } from "@/app/shared/ui";
-import { MovieList } from "@/app/widgets/movie-list";
-import { getQueryClient } from "@/pkg";
+import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 export const HomeModule = async () => {
   const t = await getTranslations("Home");
-
-  const queryClient = getQueryClient();
-
-  queryClient.prefetchQuery({
-    queryKey: ["movies"],
-    queryFn: getMovies,
-  });
-
-  const dehydratedState = dehydrate(queryClient);
   return (
-    <main className="py-8 sm:py-16 lg:py-24">
-      <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-8">
-        <div className="space-y-4">
-          <Badge variant="outline" className="text-sm">
-            {t("tag")}
-          </Badge>
+    <main className="relative min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center text-center px-8 overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(#1a1a1a_1px,transparent_1px),linear-gradient(90deg,#1a1a1a_1px,transparent_1px)] bg-[size:40px_40px] opacity-35" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#0a0a0a_75%)]" />
 
-          <h2 className="text-2xl font-semibold md:text-3xl lg:text-4xl">
-            {t("title")}
-          </h2>
+      <div className="relative flex flex-col items-center">
+        <span className="flex items-center gap-2 border border-[#222] rounded-full px-3 py-1 text-[12px] text-[#888] mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+          {t("badge")}
+        </span>
 
-          <p className="text-muted-foreground text-lg md:text-xl">
-            {t("description")}
-          </p>
+        <h1 className="text-5xl font-medium text-[#ededed] leading-tight tracking-tighter max-w-2xl mb-5">
+          {t("title")}
+          <br />
+          <span className="text-[#888]">Без зайвого шуму.</span>
+        </h1>
+
+        <p className="text-[#666] text-base max-w-sm leading-relaxed font-light mb-10">
+          {t("description")}
+        </p>
+
+        <div className="flex gap-3">
+          <Link
+            href="/items"
+            className="bg-[#ededed] text-[#0a0a0a] rounded-md px-5 py-2.5 text-sm font-medium hover:bg-white transition-colors"
+          >
+            {t("button")}
+          </Link>
         </div>
-        <HydrationBoundary state={dehydratedState}>
-          <MovieList />
-        </HydrationBoundary>
       </div>
     </main>
   );
