@@ -39,7 +39,10 @@ export const MovieCard = ({
   const rating = vote_average?.toFixed(1);
 
   return (
-    <Card className="group h-full overflow-hidden shadow-none transition-all duration-300">
+    <Card
+      data-testid="movie-card"
+      className="group h-full overflow-hidden shadow-none transition-all duration-300"
+    >
       <CardContent className="space-y-3.5">
         <div className="mb-6 overflow-hidden rounded-lg sm:mb-12">
           <Link href={movieLink}>
@@ -63,8 +66,13 @@ export const MovieCard = ({
           </Badge>
         </div>
 
-        <h3 className="line-clamp-2 text-lg font-medium md:text-xl">
-          <Link href={movieLink}>{title}</Link>
+        <h3
+          data-testid="movie-card-title"
+          className="line-clamp-2 text-lg font-medium md:text-xl"
+        >
+          <Link data-testid="movie-card-link" href={movieLink}>
+            {title}
+          </Link>
         </h3>
 
         <p className="text-muted-foreground line-clamp-2">{overview}</p>
@@ -72,7 +80,7 @@ export const MovieCard = ({
         <div className="flex items-center justify-between">
           <div className="text-muted-foreground flex items-center gap-1 text-sm font-medium">
             <StarIcon className="size-4 fill-yellow-400 text-yellow-400" />
-            <span>{rating}</span>
+            <span>{rating}5</span>
             <span className="text-xs">({vote_count})</span>
           </div>
           <Button
@@ -83,7 +91,6 @@ export const MovieCard = ({
           >
             <Link href={movieLink}>
               <ArrowRightIcon className="size-4 -rotate-45" />
-              <span className="sr-only">Детальніше: {title}</span>
             </Link>
           </Button>
         </div>
