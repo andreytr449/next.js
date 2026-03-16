@@ -1,19 +1,24 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoginForm, AuthCard, RegisterForm } from "./elements";
 import { useAuthStore } from "@/app/shared/store";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export const AuthModule = () => {
+  const router = useRouter();
   const { user } = useAuthStore();
 
   const [currentForm, setCurrentForm] = useState<"login" | "register">("login");
   const isLogin = currentForm == "login";
   const t = useTranslations(isLogin ? "Auth.login" : "Auth.register");
 
-  if (user) redirect("/");
+  useEffect(() => {
+    if (user) router.replace("/items");
+  }, [router, user]);
+
+  if (user) return null;
 
   return (
     <AuthCard
