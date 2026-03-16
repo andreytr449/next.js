@@ -1,0 +1,91 @@
+{
+  "Items": {
+    "tag": "Filme",
+    "title": "Entdecken Sie die Welt der besten Filme.",
+    "description": "Finden Sie den perfekten Film für jede Stimmung. Spannende Handlungen, wahre Geschichten und unvergessliche Emotionen warten in unserer Auswahl auf Sie."
+  },
+  "Metadata": {
+    "layout": {
+      "title": "Film App",
+      "description": "Jetzt laufende Filme entdecken"
+    }
+  },
+  "NotFound": {
+    "title": "Hoppla!",
+    "subtitle": "Etwas ist schiefgelaufen",
+    "description": "Die gesuchte Seite wurde nicht gefunden. Wir empfehlen dir, zur Startseite zurückzukehren.",
+    "button": "Zurück zur Startseite"
+  },
+  "MovieHero": {
+    "posterAlt": "Filmplakat",
+    "runtime": "Laufzeit"
+  },
+  "MovieBody": {
+    "overview": "Übersicht",
+    "rating": "Bewertung",
+    "votes": "Stimmen",
+    "budget": "Budget",
+    "productionCost": "Produktionskosten",
+    "revenue": "Einnahmen",
+    "boxOffice": "Kasseneinnahmen",
+    "popularity": "Beliebtheit",
+    "trendingIndex": "Trendindex",
+    "details": "Details",
+    "releaseDate": "Erscheinungsdatum",
+    "runtime": "Laufzeit",
+    "status": "Status",
+    "language": "Sprache",
+    "imdbId": "IMDB-ID",
+    "production": "Produktion"
+  },
+
+  "NotFoundMovie": {
+    "label": "Film nicht gefunden",
+    "description": "Die Rolle, die Sie suchen, fehlt in unserem Archiv.",
+    "back": "Zurück zum Katalog"
+  },
+  "Header": {
+    "home": "Startseite",
+    "items": "Artikel",
+    "button": "Registrieren",
+    "logout-btn": "Abmelden"
+  },
+  "Auth": {
+    "register": {
+      "title": "Registrieren",
+      "description": "Entdecke, verfolge und genieße Filme, die du liebst.",
+      "alreadyHaveAccount": "Bereits ein Konto?",
+      "signInInstead": "Stattdessen anmelden"
+    },
+    "login": {
+      "title": "Willkommen zurück",
+      "description": "Melde dich an und setze deine Filmreise fort.",
+      "noAccount": "Noch kein Konto?",
+      "signUpInstead": "Jetzt registrieren"
+    },
+    "form": {
+      "email": "E-Mail-Adresse",
+      "email-placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+      "username": "Benutzername",
+      "username-placeholder": "Geben Sie Ihren Benutzernamen ein",
+      "password": "Passwort",
+      "confirm-password": "Passwort bestätigen",
+      "register-btn": "Konto erstellen",
+      "login-btn": "Anmelden",
+      "loading-btn": "Laden....",
+      "validation": {
+        "invalidEmail": "Ungültige E-Mail-Adresse.",
+        "minLength": "Mindestens {min} Zeichen.",
+        "maxLength": "Höchstens {max} Zeichen.",
+        "passwordsDoNotMatch": "Passwörter stimmen nicht überein."
+      }
+    }
+  },
+  "Home": {
+    "badge": "Neue Filme sind jetzt verfügbar",
+    "title": "Deine Filmsammlung.",
+    "subtitle": "Ohne den Lärm.",
+    "description": "Finde Filme, sieh dir Bewertungen an und entdecke neue Streifen — schnell und einfach.",
+    "button": "Filme durchsuchen"
+  }
+}
