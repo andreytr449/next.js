@@ -34,3 +34,4 @@ export {
 export { Label } from "./label";
 export { Input } from "./input";
 export { Separator } from "./separator";
+export { FormErrorText } from "./form-error-text";

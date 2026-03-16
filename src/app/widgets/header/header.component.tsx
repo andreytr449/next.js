@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { LanguageDropdown } from "@/app/features/language-switcher";
 import { Button } from "@/app/shared/ui";
 import { LanguagesIcon } from "lucide-react";
+import { AuthButton } from "@/app/features/auth-button";
 
 export const Header = async () => {
   const t = await getTranslations("Header");
@@ -35,11 +36,7 @@ export const Header = async () => {
               </Button>
             }
           />
-          <Link className="bg-foreground px-2 rounded-2xl" href="/auth/login">
-            <span className="text-background font-medium text-xs">
-              {t("button")}
-            </span>
-          </Link>
+          <AuthButton />
         </div>
       </div>
     </header>

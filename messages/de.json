@@ -47,7 +47,8 @@
   "Header": {
     "home": "Startseite",
     "items": "Artikel",
-    "button": "Registrieren"
+    "button": "Registrieren",
+    "logout-btn": "Abmelden"
   },
   "Auth": {
     "register": {
@@ -61,6 +62,23 @@
       "description": "Melde dich an und setze deine Filmreise fort.",
       "noAccount": "Noch kein Konto?",
       "signUpInstead": "Jetzt registrieren"
+    },
+    "form": {
+      "email": "E-Mail-Adresse",
+      "email-placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+      "username": "Benutzername",
+      "username-placeholder": "Geben Sie Ihren Benutzernamen ein",
+      "password": "Passwort",
+      "confirm-password": "Passwort bestätigen",
+      "register-btn": "Konto erstellen",
+      "login-btn": "Anmelden",
+      "loading-btn": "Laden....",
+      "validation": {
+        "invalidEmail": "Ungültige E-Mail-Adresse.",
+        "minLength": "Mindestens {min} Zeichen.",
+        "maxLength": "Höchstens {max} Zeichen.",
+        "passwordsDoNotMatch": "Passwörter stimmen nicht überein."
+      }
     }
   }
 }
