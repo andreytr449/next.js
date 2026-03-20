@@ -1,7 +1,7 @@
 import { getMovies } from "@/app/entities/api/movies";
 import { Badge } from "@/app/shared/ui";
 import { MovieList } from "@/app/widgets/movie-list";
-import { getQueryClient } from "@/pkg";
+import { getQueryClient } from "@/pkg/query";
 import { getTranslations } from "next-intl/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
