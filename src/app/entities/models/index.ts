@@ -1,1 +1,1 @@
-export type { Movie } from "./movie.model";
+export type { Movie } from './movie.model'

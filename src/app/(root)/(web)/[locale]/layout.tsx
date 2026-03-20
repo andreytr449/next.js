@@ -1,38 +1,34 @@
-import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
-import { routing } from "@/pkg/locale";
-import { notFound } from "next/navigation";
-import { getMessages, getTranslations } from "next-intl/server";
-import { Providers } from "@/app/shared/ui";
-import { Header } from "@/app/widgets/header";
+import type { Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
+import { routing } from '@/pkg/locale'
+import { notFound } from 'next/navigation'
+import { getMessages, getTranslations } from 'next-intl/server'
+import { Providers } from '@/app/shared/ui'
+import { Header } from '@/app/widgets/header'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Metadata.layout" });
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.layout' })
 
   return {
-    title: t("title"),
-    description: t("description"),
-  };
+    title: t('title'),
+    description: t('description'),
+  }
 }
 
 export default async function RootLayout({
   children,
   params,
 }: Readonly<{
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
 }>) {
-  const { locale } = await params;
+  const { locale } = await params
 
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
-    notFound();
+    notFound()
   }
-  const messages = await getMessages();
+  const messages = await getMessages()
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
       <Providers>
@@ -40,5 +36,5 @@ export default async function RootLayout({
         {children}
       </Providers>
     </NextIntlClientProvider>
-  );
+  )
 }
