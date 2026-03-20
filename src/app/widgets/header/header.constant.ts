@@ -1,12 +1,12 @@
-import { NavigationItem } from "./header.interface";
+import { NavigationItem } from './header.interface'
 
 export const navigationData: NavigationItem[] = [
   {
-    key: "home",
-    href: "/",
+    key: 'home',
+    href: '/',
   },
   {
-    key: "items",
-    href: "/items",
+    key: 'items',
+    href: '/items',
   },
-];
+]

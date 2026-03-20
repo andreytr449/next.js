@@ -1,21 +1,21 @@
-"use client";
+'use client'
 
-import { MovieCard } from "./elements";
-import { useMoviesQuery } from "@/app/entities/api/movies";
-import { ErrorMessage, MovieListSkeleton } from "@/app/shared/ui";
+import { MovieCard } from './elements'
+import { useMoviesQuery } from '@/app/entities/api/movies'
+import { ErrorMessage, MovieListSkeleton } from '@/app/shared/ui'
 
 export const MovieList = () => {
-  const { data, isLoading, error } = useMoviesQuery();
-  if (isLoading) return <MovieListSkeleton />;
-  if (error) return <ErrorMessage message={error.message} />;
+  const { data, isLoading, error } = useMoviesQuery()
+  if (isLoading) return <MovieListSkeleton />
+  if (error) return <ErrorMessage message={error.message} />
 
-  const movies = data?.results;
+  const movies = data?.results
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
       {movies &&
         movies.map((movie) => (
           <MovieCard
-            key={"movie" + movie.id}
+            key={'movie' + movie.id}
             adult={movie.adult}
             backdrop_path={movie.backdrop_path}
             genre_ids={movie.genre_ids}
@@ -32,5 +32,5 @@ export const MovieList = () => {
           />
         ))}
     </div>
-  );
-};
+  )
+}
