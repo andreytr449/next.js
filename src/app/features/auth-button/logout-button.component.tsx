@@ -2,7 +2,7 @@
 
 import { useAuthStore } from "@/app/shared/store";
 import { Button } from "@/app/shared/ui";
-import { Link } from "@/i18n/routing";
+import { Link } from "@/pkg/locale";
 import { useTranslations } from "next-intl";
 
 export const AuthButton = () => {

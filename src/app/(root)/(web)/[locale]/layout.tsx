@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { routing } from "@/i18n/routing";
+import { routing } from "@/pkg/locale";
 import { notFound } from "next/navigation";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Providers } from "@/app/shared/ui";

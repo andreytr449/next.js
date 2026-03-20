@@ -1,4 +1,4 @@
-import { Link } from "@/i18n/routing";
+import { Link } from "@/pkg/locale";
 import { getTranslations } from "next-intl/server";
 
 export const HomeModule = async () => {

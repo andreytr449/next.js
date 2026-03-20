@@ -1,5 +1,5 @@
 import { Logo } from "@/app/shared/assets";
-import { Link } from "@/i18n/routing";
+import { Link } from "@/pkg/locale";
 import { navigationData } from "./header.constant";
 import { getTranslations } from "next-intl/server";
 import { LanguageDropdown } from "@/app/features/language-switcher";

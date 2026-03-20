@@ -1,4 +1,4 @@
-import { Link } from "@/i18n/routing";
+import { Link } from "@/pkg/locale";
 import { ChevronLeft } from "lucide-react";
 
 export const BackButton = () => {

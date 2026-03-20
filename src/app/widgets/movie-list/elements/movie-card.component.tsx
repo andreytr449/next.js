@@ -1,7 +1,7 @@
 import { ArrowRightIcon, CalendarDaysIcon, StarIcon } from "lucide-react";
 
 import { Card, CardContent, Button, Badge } from "@/app/shared/ui";
-import { Link } from "@/i18n/routing";
+import { Link } from "@/pkg/locale";
 import Image from "next/image";
 import { Movie } from "@/app/entities/models";
 

@@ -11,7 +11,7 @@ import {
 } from "@/app/shared/ui";
 import { LOCALES } from "./language-switcher.constant";
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/routing";
+import { useRouter, usePathname } from "@/pkg/locale";
 
 type Props = {
   trigger: ReactNode;
