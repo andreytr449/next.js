@@ -1,33 +1,30 @@
-import * as z from "zod";
+import * as z from 'zod'
 
-type TranslationFn = (
-  key: string,
-  values?: Record<string, string | number | Date>,
-) => string;
+type TranslationFn = (key: string, values?: Record<string, string | number | Date>) => string
 
 export const createLoginSchema = (t: TranslationFn) =>
   z.object({
-    email: z.email(t("validation.invalidEmail")),
+    email: z.email(t('validation.invalidEmail')),
     password: z
       .string()
-      .min(8, t("validation.minLength", { min: 8 }))
-      .max(64, t("validation.maxLength", { max: 64 })),
-  });
+      .min(8, t('validation.minLength', { min: 8 }))
+      .max(64, t('validation.maxLength', { max: 64 })),
+  })
 export const createRegisterSchema = (t: TranslationFn) =>
   z
     .object({
       name: z
         .string()
-        .min(5, t("validation.minLength", { min: 5 }))
-        .max(32, t("validation.maxLength", { max: 32 })),
-      email: z.email(t("validation.invalidEmail")),
+        .min(5, t('validation.minLength', { min: 5 }))
+        .max(32, t('validation.maxLength', { max: 32 })),
+      email: z.email(t('validation.invalidEmail')),
       password: z
         .string()
-        .min(8, t("validation.minLength", { min: 8 }))
-        .max(64, t("validation.maxLength", { max: 64 })),
+        .min(8, t('validation.minLength', { min: 8 }))
+        .max(64, t('validation.maxLength', { max: 64 })),
       confirmPassword: z.string(),
     })
     .refine((data) => data.password === data.confirmPassword, {
-      message: t("validation.passwordsDoNotMatch"),
-      path: ["confirmPassword"],
-    });
+      message: t('validation.passwordsDoNotMatch'),
+      path: ['confirmPassword'],
+    })

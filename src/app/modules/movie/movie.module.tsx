@@ -1,9 +1,9 @@
-import { Movie } from "@/app/entities/models";
-import { BackButton, MovieBody, MovieHero } from "./elements";
+import { Movie } from '@/app/entities/models'
+import { BackButton, MovieBody, MovieHero } from './elements'
 
 export const MovieModule = async (props: Movie) => {
   return (
-    <div className="min-h-screen relative">
+    <div className='relative min-h-screen'>
       <BackButton />
       <MovieHero
         genres={props.genres}
@@ -27,5 +27,5 @@ export const MovieModule = async (props: Movie) => {
         vote_count={props.vote_count}
       />
     </div>
-  );
-};
+  )
+}
