@@ -1,41 +1,52 @@
 'use client'
 
-import { useState } from 'react'
-import { Button, FormErrorText, Input, Label } from '@/app/shared/ui'
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { useRouter } from '@/pkg/locale'
 import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoginFormData } from '../auth.interface'
-import { createLoginSchema } from '../auth.service'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useAuthStore } from '@/app/shared/store/'
-import { useRouter } from 'next/navigation'
 
-export const LoginForm = () => {
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { useAuthStore } from '@/app/shared/store/'
+import { Button, FormErrorText, Input, Label } from '@/app/shared/ui'
+
+import { LoginFormData } from '../auth.interface'
+import { createLoginSchema } from '@/app/shared/lib'
+
+const LoginFormComponent = () => {
   const router = useRouter()
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
   const t = useTranslations('Auth.form')
+
   const { handleSubmit, register, formState } = useForm<LoginFormData>({
     resolver: zodResolver(createLoginSchema(t)),
   })
+
   const { login } = useAuthStore()
-  const [isLoading, setIsLoading] = useState(false)
 
   const errors = formState.errors
-  const onSubmit = (data: LoginFormData) => {
+
+  const handleLogin = (data: LoginFormData) => {
     setIsLoading(true)
+
     login({ email: data.email }, 'user-token')
+
     setIsLoading(false)
-    router.push('/en/items')
+
+    router.push('/items')
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+    <form onSubmit={handleSubmit(handleLogin)} className='space-y-4'>
       <div className='space-y-1'>
         <Label className='leading-5' htmlFor='userEmail'>
           {t('email')}*
         </Label>
+
         <Input
           disabled={isLoading}
           {...register('email')}
@@ -43,6 +54,7 @@ export const LoginForm = () => {
           id='userEmail'
           placeholder={t('email-placeholder')}
         />
+
         <FormErrorText message={errors.email?.message} />
       </div>
 
@@ -50,6 +62,7 @@ export const LoginForm = () => {
         <Label className='leading-5' htmlFor='password'>
           {t('password')}*
         </Label>
+
         <div className='relative'>
           <Input
             disabled={isLoading}
@@ -59,7 +72,9 @@ export const LoginForm = () => {
             placeholder='••••••••••••••••'
             className='pr-9'
           />
+
           <FormErrorText message={errors.password?.message} />
+
           <Button
             variant='ghost'
             size='icon'
@@ -71,9 +86,12 @@ export const LoginForm = () => {
           </Button>
         </div>
       </div>
+
       <Button className='w-full' type='submit'>
         {isLoading ? t('loading-btn') : t('login-btn')}
       </Button>
     </form>
   )
 }
+
+export default LoginFormComponent

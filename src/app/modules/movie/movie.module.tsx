@@ -1,4 +1,5 @@
 import { Movie } from '@/app/entities/models'
+
 import { BackButton, MovieBody, MovieHero } from './elements'
 
 export const MovieModule = async (props: Movie) => {

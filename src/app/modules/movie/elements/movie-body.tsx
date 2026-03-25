@@ -1,6 +1,7 @@
+import { getTranslations } from 'next-intl/server'
+
 import { RatingCircle } from '@/app/shared/assets'
 import { InfoRow, StatCard } from '@/app/shared/ui'
-import { getTranslations } from 'next-intl/server'
 
 interface IProps {
   overview: string

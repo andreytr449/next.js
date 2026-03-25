@@ -1,11 +1,13 @@
-import { Logo } from '@/app/shared/assets'
-import { Link } from '@/pkg/locale'
-import { navigationData } from './header.constant'
-import { getTranslations } from 'next-intl/server'
-import { LanguageDropdown } from '@/app/features/language-switcher'
-import { Button } from '@/app/shared/ui'
 import { LanguagesIcon } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
+
 import { AuthButton } from '@/app/features/auth-button'
+import { LanguageDropdown } from '@/app/features/language-switcher'
+import { Logo } from '@/app/shared/assets'
+import { Button } from '@/app/shared/ui'
+import { Link } from '@/pkg/locale'
+
+import { navigationData } from './header.constant'
 
 export const Header = async () => {
   const t = await getTranslations('Header')

@@ -1,7 +1,9 @@
-import { getMovieById } from '@/app/entities/api/movies/movies.api'
-import { MovieModule } from '@/app/modules/movie'
-import NotFoundMoviePage from '../not-found'
 import { getTranslations } from 'next-intl/server'
+
+import { getMovieById } from '@/app/entities/api/movies/'
+import { MovieModule } from '@/app/modules/movie'
+
+import NotFoundMoviePage from '../not-found'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -9,8 +11,9 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params
-  const { results, success } = await getMovieById(id)
-  if (!success || !results) {
+  const results = await getMovieById(id)
+
+  if (!results) {
     const t = await getTranslations('NotFoundMovie')
     return {
       title: t('label'),
@@ -22,11 +25,12 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function ItemPage({ params }: Props) {
+export default async function MoviePage({ params }: Props) {
   const { id } = await params
-  const { results, success } = await getMovieById(id)
+  const results = await getMovieById(id)
 
-  if (!results || !success) return <NotFoundMoviePage />
+  console.log(results)
+  if (!results) return <NotFoundMoviePage />
 
   return <MovieModule {...results} />
 }

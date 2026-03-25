@@ -24,3 +24,15 @@ export interface Movie {
   imdb_id: string
   production_companies: { name: string; origin_country: string }[]
 }
+
+export interface MoviesResponse {
+  page: number
+  results: Movie[]
+  total_pages: number
+  total_results: number
+}
+
+export interface MovieResponse {
+  success: boolean
+  results: Movie
+}

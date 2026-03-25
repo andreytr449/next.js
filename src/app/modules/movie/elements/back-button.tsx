@@ -1,5 +1,6 @@
-import { Link } from '@/pkg/locale'
 import { ChevronLeft } from 'lucide-react'
+
+import { Link } from '@/pkg/locale'
 
 export const BackButton = () => {
   return (
