@@ -1,3 +1,3 @@
-export { AuthCard } from './auth-card'
-export { LoginForm } from './login-form'
-export { RegisterForm } from './register-form'
+export { default as AuthCardComponent } from './auth-card'
+export { default as LoginFormComponent } from './login-form'
+export { default as RegisterFormComponent } from './register-form'

@@ -1,6 +1,7 @@
-import createMiddleware from 'next-intl/middleware'
-import { routing } from '@/pkg/locale'
 import { NextRequest, NextResponse } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
+
+import { routing } from '@/pkg/locale'
 
 const handleI18n = createMiddleware(routing)
 export default function proxy(req: NextRequest) {

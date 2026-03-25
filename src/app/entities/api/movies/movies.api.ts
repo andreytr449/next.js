@@ -1,8 +1,9 @@
 'use server'
 
-import { serverEnv } from '@/config/env'
 import { getLocale } from 'next-intl/server'
-import { MovieResponse, MoviesResponse } from './movies.interface'
+
+import { Movie, MoviesResponse } from '@/app/entities/models'
+import { tmdbApi } from '@/pkg/query/ky-instance'
 
 const localeToLanguage: Record<string, string> = {
   en: 'en-US',
@@ -10,30 +11,29 @@ const localeToLanguage: Record<string, string> = {
 }
 
 export const getMovies = async (): Promise<MoviesResponse> => {
-  const { TMDB_API_KEY } = serverEnv
   const locale = await getLocale()
-  const language = localeToLanguage[locale] ?? 'en-US'
+  const language = localeToLanguage[locale]
 
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?language=${language}&page=1&api_key=${TMDB_API_KEY}&include_adult=false`,
-  )
-
-  return await res.json()
+  return tmdbApi
+    .get('movie/now_playing', {
+      searchParams: {
+        language: language,
+        page: 1,
+        include_adult: false,
+      },
+    })
+    .json<MoviesResponse>()
 }
 
-export const getMovieById = async (movieId: string): Promise<MovieResponse> => {
-  const { TMDB_API_KEY } = serverEnv
+export const getMovieById = async (movieId: string): Promise<Movie> => {
   const locale = await getLocale()
-  const language = localeToLanguage[locale] ?? 'en-US'
+  const language = localeToLanguage[locale]
 
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?language=${language}&api_key=${TMDB_API_KEY}`,
-    {
-      cache: 'no-store',
-    },
-  )
-
-  const movie = await res.json()
-
-  return { success: res.ok, results: movie }
+  return tmdbApi
+    .get(`movie/${movieId}`, {
+      searchParams: {
+        language: language,
+      },
+    })
+    .json<Movie>()
 }

@@ -1,5 +1,6 @@
-import { Link } from '@/pkg/locale'
 import { getTranslations } from 'next-intl/server'
+
+import { Link } from '@/pkg/locale'
 
 export const HomeModule = async () => {
   const t = await getTranslations('Home')

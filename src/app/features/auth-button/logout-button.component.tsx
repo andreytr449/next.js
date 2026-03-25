@@ -1,12 +1,14 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { useAuthStore } from '@/app/shared/store'
 import { Button } from '@/app/shared/ui'
 import { Link } from '@/pkg/locale'
-import { useTranslations } from 'next-intl'
 
 export const AuthButton = () => {
   const { logout, user } = useAuthStore()
+
   const t = useTranslations('Header')
 
   if (!user)

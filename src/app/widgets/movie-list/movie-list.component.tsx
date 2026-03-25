@@ -1,8 +1,9 @@
 'use client'
 
-import { MovieCard } from './elements'
 import { useMoviesQuery } from '@/app/entities/api/movies'
 import { ErrorMessage, MovieListSkeleton } from '@/app/shared/ui'
+
+import { MovieCard } from './elements'
 
 export const MovieList = () => {
   const { data, isLoading, error } = useMoviesQuery()
