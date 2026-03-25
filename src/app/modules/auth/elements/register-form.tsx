@@ -1,63 +1,72 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { useRouter } from '@/pkg/locale'
 import { useTranslations } from 'next-intl'
-import { useAuthStore } from '@/app/shared/store'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { createRegisterSchema } from '../auth.service'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { useAuthStore } from '@/app/shared/store'
+import { Button, FormErrorText, Input, Label } from '@/app/shared/ui'
 
 import { RegisterFormData } from '../auth.interface'
+import { createRegisterSchema } from '@/app/shared/lib'
 
-import { Button, FormErrorText, Input, Label } from '@/app/shared/ui'
-import { EyeIcon, EyeOffIcon } from 'lucide-react'
-
-export const RegisterForm = () => {
+const RegisterFormComponent = () => {
   const router = useRouter()
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
   const t = useTranslations('Auth.form')
   const { handleSubmit, register, formState } = useForm<RegisterFormData>({
     resolver: zodResolver(createRegisterSchema(t)),
   })
+
   const { login } = useAuthStore()
-  const [isLoading, setIsLoading] = useState(false)
 
   const errors = formState.errors
-  const onSubmit = (data: RegisterFormData) => {
+
+  const handleRegister = (data: RegisterFormData) => {
     setIsLoading(true)
+
     login({ email: data.email }, 'user-token')
+
     setIsLoading(false)
-    router.push('/en/items')
+
+    router.push('/items')
   }
 
   return (
-    <form className='space-y-4' onSubmit={handleSubmit(onSubmit)}>
-      {/* Username */}
+    <form className='space-y-4' onSubmit={handleSubmit(handleRegister)}>
       <div className='space-y-1'>
         <Label className='leading-5' htmlFor='username'>
           {t('username')}*
         </Label>
+
         <Input {...register('name')} type='text' id='username' placeholder={t('username-placeholder')} />
+
         <FormErrorText message={errors.name?.message} />
       </div>
 
-      {/* Email */}
       <div className='space-y-1'>
         <Label className='leading-5' htmlFor='userEmail'>
           {t('email')}*
         </Label>
+
         <Input {...register('email')} type='email' id='userEmail' placeholder={t('email-placeholder')} />
+
         <FormErrorText message={errors.email?.message} />
       </div>
 
-      {/* Password */}
       <div className='w-full space-y-1'>
         <Label className='leading-5' htmlFor='password'>
           {t('password')}*
         </Label>
+
         <div className='relative'>
           <Input
             {...register('password')}
@@ -66,6 +75,7 @@ export const RegisterForm = () => {
             placeholder='••••••••••••••••'
             className='pr-9'
           />
+
           <Button
             variant='ghost'
             size='icon'
@@ -79,11 +89,11 @@ export const RegisterForm = () => {
         <FormErrorText message={errors.password?.message} />
       </div>
 
-      {/* Confirm Password */}
       <div className='w-full space-y-1'>
         <Label className='leading-5' htmlFor='confirmPassword'>
           {t('confirm-password')}*
         </Label>
+
         <div className='relative'>
           <Input
             {...register('confirmPassword')}
@@ -92,6 +102,7 @@ export const RegisterForm = () => {
             placeholder='••••••••••••••••'
             className='pr-9'
           />
+
           <Button
             variant='ghost'
             size='icon'
@@ -102,6 +113,7 @@ export const RegisterForm = () => {
             <span className='sr-only'>{isConfirmPasswordVisible ? 'Hide password' : 'Show password'}</span>
           </Button>
         </div>
+
         <FormErrorText message={errors.confirmPassword?.message} />
       </div>
 
@@ -111,3 +123,5 @@ export const RegisterForm = () => {
     </form>
   )
 }
+
+export default RegisterFormComponent

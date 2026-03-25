@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 test.describe('Movies Page', () => {
   test('items page has correct title and visible items', async ({ page }) => {

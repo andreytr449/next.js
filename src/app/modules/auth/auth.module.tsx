@@ -1,17 +1,21 @@
 'use client'
 
+import { useRouter } from '@/pkg/locale'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-import { LoginForm, AuthCard, RegisterForm } from './elements'
+
 import { useAuthStore } from '@/app/shared/store'
-import { useRouter } from 'next/navigation'
+
+import { AuthCardComponent, LoginFormComponent, RegisterFormComponent } from './elements'
 
 export const AuthModule = () => {
   const router = useRouter()
   const { user } = useAuthStore()
 
   const [currentForm, setCurrentForm] = useState<'login' | 'register'>('login')
+
   const isLogin = currentForm == 'login'
+
   const t = useTranslations(isLogin ? 'Auth.login' : 'Auth.register')
 
   useEffect(() => {
@@ -21,7 +25,7 @@ export const AuthModule = () => {
   if (user) return null
 
   return (
-    <AuthCard
+    <AuthCardComponent
       title={t('title')}
       description={t('description')}
       footer={{
@@ -30,7 +34,7 @@ export const AuthModule = () => {
         onSwitch: () => setCurrentForm(isLogin ? 'register' : 'login'),
       }}
     >
-      {isLogin ? <LoginForm /> : <RegisterForm />}
-    </AuthCard>
+      {isLogin ? <LoginFormComponent /> : <RegisterFormComponent />}
+    </AuthCardComponent>
   )
 }

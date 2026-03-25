@@ -12,7 +12,9 @@ interface AuthCardProps {
   children: React.ReactNode
 }
 
-export const AuthCard = ({ title, description, footer, children }: AuthCardProps) => {
+const AuthCardComponent = (props: AuthCardProps) => {
+  const { title, description, footer, children } = props
+
   return (
     <div className='relative flex h-auto min-h-screen items-center justify-center overflow-x-hidden px-4 py-10 sm:px-6 lg:px-8'>
       <div className='absolute'>
@@ -44,3 +46,5 @@ export const AuthCard = ({ title, description, footer, children }: AuthCardProps
     </div>
   )
 }
+
+export default AuthCardComponent

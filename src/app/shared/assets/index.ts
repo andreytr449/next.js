@@ -1,1 +1,1 @@
-export { RatingCircle, Logo, AuthBackgroundShape } from './icon'
+export { AuthBackgroundShape, Logo, RatingCircle } from './icon'
