@@ -1,20 +1,29 @@
 'use client'
 
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
-import { useRouter } from '@/pkg/locale'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { FormErrorTextComponent } from '@/app/shared/components/form-error-text'
 import { useAuthStore } from '@/app/shared/store'
-import { Button, FormErrorText, Input, Label } from '@/app/shared/ui'
+import { createRegisterSchema } from '@/app/shared/utilities/auth.validation'
+import { useRouter } from '@/pkg/locale'
+import { Button } from '@/pkg/theme/components/button'
+import { Input } from '@/pkg/theme/components/input'
+import { Label } from '@/pkg/theme/components/label'
 
 import { RegisterFormData } from '../auth.interface'
-import { createRegisterSchema } from '@/app/shared/lib'
 
-const RegisterFormComponent = () => {
+// interface
+interface IRegisterFormProps {}
+
+// component
+const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
+  const {} = props
+
   const router = useRouter()
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -49,7 +58,7 @@ const RegisterFormComponent = () => {
 
         <Input {...register('name')} type='text' id='username' placeholder={t('username-placeholder')} />
 
-        <FormErrorText message={errors.name?.message} />
+        <FormErrorTextComponent message={errors.name?.message} />
       </div>
 
       <div className='space-y-1'>
@@ -59,7 +68,7 @@ const RegisterFormComponent = () => {
 
         <Input {...register('email')} type='email' id='userEmail' placeholder={t('email-placeholder')} />
 
-        <FormErrorText message={errors.email?.message} />
+        <FormErrorTextComponent message={errors.email?.message} />
       </div>
 
       <div className='w-full space-y-1'>
@@ -86,7 +95,8 @@ const RegisterFormComponent = () => {
             <span className='sr-only'>{isPasswordVisible ? 'Hide password' : 'Show password'}</span>
           </Button>
         </div>
-        <FormErrorText message={errors.password?.message} />
+
+        <FormErrorTextComponent message={errors.password?.message} />
       </div>
 
       <div className='w-full space-y-1'>
@@ -114,7 +124,7 @@ const RegisterFormComponent = () => {
           </Button>
         </div>
 
-        <FormErrorText message={errors.confirmPassword?.message} />
+        <FormErrorTextComponent message={errors.confirmPassword?.message} />
       </div>
 
       <Button className='w-full' type='submit'>

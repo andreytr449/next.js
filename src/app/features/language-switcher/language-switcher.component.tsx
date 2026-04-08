@@ -1,28 +1,33 @@
 'use client'
 
 import { useLocale } from 'next-intl'
-import type { ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import { useState } from 'react'
 
+import { usePathname, useRouter } from '@/pkg/locale'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from '@/app/shared/ui'
-import { usePathname, useRouter } from '@/pkg/locale'
+} from '@/pkg/theme/components/dropdown-menu'
 
 import { LOCALES } from './language-switcher.constant'
 
-type Props = {
+// interface
+interface IProps {
   trigger: ReactNode
   defaultOpen?: boolean
   align?: 'start' | 'center' | 'end'
 }
 
-export const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
+// component
+const LanguageDropdownComponent: FC<Readonly<IProps>> = (props) => {
+  const { trigger, align, defaultOpen } = props
+
   const locale = useLocale()
+
   const pathname = usePathname()
   const router = useRouter()
 
@@ -33,6 +38,7 @@ export const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
     setLanguage(newLocale)
   }
 
+  // render
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
       <DropdownMenuTrigger suppressHydrationWarning asChild data-testid='language-switcher'>
@@ -55,3 +61,5 @@ export const LanguageDropdown = ({ defaultOpen, align, trigger }: Props) => {
     </DropdownMenu>
   )
 }
+
+export default LanguageDropdownComponent

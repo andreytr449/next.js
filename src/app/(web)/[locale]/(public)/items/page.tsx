@@ -1,11 +1,20 @@
-import { MoviesModule } from '@/app/modules/movies'
-import { dehydrate } from '@tanstack/react-query'
-import { getQueryClient } from '@/pkg/query'
+import { NextPage } from 'next'
+
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+
 import { getMovies } from '@/app/entities/api/movies'
+import { MoviesModuleComponent } from '@/app/modules/movies'
+import { getQueryClient } from '@/pkg/rest-api'
 
 export const revalidate = 3600
 
-export default async function Home() {
+// interface
+interface IProps {}
+
+// component
+const HomePage: NextPage<Readonly<IProps>> = (props) => {
+  const {} = props
+
   const queryClient = getQueryClient()
 
   queryClient.prefetchQuery({
@@ -14,5 +23,13 @@ export default async function Home() {
   })
 
   const dehydratedState = dehydrate(queryClient)
-  return <MoviesModule dehydratedState={dehydratedState} />
+
+  // render
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <MoviesModuleComponent />
+    </HydrationBoundary>
+  )
 }
+
+export default HomePage

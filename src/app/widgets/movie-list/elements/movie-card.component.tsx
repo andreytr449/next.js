@@ -1,13 +1,17 @@
 import { ArrowRightIcon, CalendarDaysIcon, StarIcon } from 'lucide-react'
 import Image from 'next/image'
+import type { FC } from 'react'
 
 import { Movie } from '@/app/entities/models'
-import { Badge, Button, Card, CardContent } from '@/app/shared/ui'
+import { TMDB_IMAGE_BASE } from '@/app/shared/constants'
 import { Link } from '@/pkg/locale'
+import { Badge } from '@/pkg/theme/components/badge'
+import { Button } from '@/pkg/theme/components/button'
+import { Card } from '@/pkg/theme/components/card'
+import { CardContent } from '@/pkg/theme/components/card'
 
-const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500'
-
-type MovieCardProps = Pick<
+// interface
+interface IMovieCardProps extends Pick<
   Movie,
   | 'id'
   | 'title'
@@ -22,22 +26,26 @@ type MovieCardProps = Pick<
   | 'genre_ids'
   | 'popularity'
   | 'video'
->
+> {
+  id: number
+  title: string
+  overview: string
+  poster_path: string
+  release_date: string
+  vote_average: number
+  vote_count: number
+  original_language: string
+}
 
-export const MovieCard = ({
-  id,
-  title,
-  overview,
-  poster_path,
-  release_date,
-  vote_average,
-  vote_count,
-  original_language,
-}: MovieCardProps) => {
+// component
+const MovieCardComponent: FC<Readonly<IMovieCardProps>> = (props) => {
+  const { id, title, overview, poster_path, release_date, vote_average, vote_count, original_language } = props
+
   const movieLink = `/items/${id}`
   const releaseYear = release_date?.slice(0, 4)
   const rating = vote_average?.toFixed(1)
 
+  // render
   return (
     <Card data-testid='movie-card' className='group h-full overflow-hidden shadow-none transition-all duration-300'>
       <CardContent className='space-y-3.5'>
@@ -56,8 +64,10 @@ export const MovieCard = ({
         <div className='flex items-center justify-between gap-1.5'>
           <div className='text-muted-foreground flex items-center gap-1.5'>
             <CalendarDaysIcon className='size-4' />
+
             <span>{releaseYear}</span>
           </div>
+
           <Badge className='bg-primary/10 text-primary rounded-full border-0 text-sm uppercase'>
             {original_language}
           </Badge>
@@ -74,9 +84,12 @@ export const MovieCard = ({
         <div className='flex items-center justify-between'>
           <div className='text-muted-foreground flex items-center gap-1 text-sm font-medium'>
             <StarIcon className='size-4 fill-yellow-400 text-yellow-400' />
+
             <span>{rating}5</span>
+
             <span className='text-xs'>({vote_count})</span>
           </div>
+
           <Button
             size='icon'
             variant='outline'
@@ -92,3 +105,5 @@ export const MovieCard = ({
     </Card>
   )
 }
+
+export default MovieCardComponent

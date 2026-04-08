@@ -1,9 +1,18 @@
 import { getTranslations } from 'next-intl/server'
+import type { FC } from 'react'
 
 import { Link } from '@/pkg/locale'
 
-export const HomeModule = async () => {
+// interface
+interface IProps {}
+
+// component
+const HomeModuleComponent: FC<Readonly<IProps>> = async (props) => {
+  const {} = props
+
   const t = await getTranslations('Home')
+
+  // render
   return (
     <main className='relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] px-8 text-center'>
       <div className='absolute inset-0 bg-[linear-gradient(#1a1a1a_1px,transparent_1px),linear-gradient(90deg,#1a1a1a_1px,transparent_1px)] bg-[size:40px_40px] opacity-35' />
@@ -12,12 +21,15 @@ export const HomeModule = async () => {
       <div className='relative flex flex-col items-center'>
         <span className='mb-8 flex items-center gap-2 rounded-full border border-[#222] px-3 py-1 text-[12px] text-[#888]'>
           <span className='h-1.5 w-1.5 rounded-full bg-green-400' />
+
           {t('badge')}
         </span>
 
         <h1 className='mb-5 max-w-2xl text-5xl leading-tight font-medium tracking-tighter text-[#ededed]'>
           {t('title')}
+
           <br />
+
           <span className='text-[#888]'> {t('subtitle')}</span>
         </h1>
 
@@ -35,3 +47,5 @@ export const HomeModule = async () => {
     </main>
   )
 }
+
+export default HomeModuleComponent

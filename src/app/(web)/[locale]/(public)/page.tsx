@@ -1,5 +1,5 @@
-import { HomeModule } from '@/app/modules/home'
+import { HomeModuleComponent } from '@/app/modules/home'
 
 export default function HomePage() {
-  return <HomeModule />
+  return <HomeModuleComponent />
 }

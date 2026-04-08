@@ -1,2 +1,1 @@
-export { BackButton, MovieBody, MovieHero } from './elements'
-export { MovieModule } from './movie.module'
+export { default as MovieModuleComponent } from './movie.module'

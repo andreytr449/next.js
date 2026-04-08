@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "type-check": "tsc --noEmit",
+    "format": "yarn run type-check && yarn run lint && yarn run prettier",
+    "deploy": "opennextjs-cloudflare build --env=$CLOUDFLARE_ENV && opennextjs-cloudflare deploy --env=$CLOUDFLARE_ENV",
+    "devsafe": "rm -rf .next && rm -rf .open-next && next dev",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview --env=$CLOUDFLARE_ENV",
+    "dev": "next dev --turbo",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "start": "next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@t3-oss/env-nextjs": "^0.13.11",
     "@tanstack/react-query": "^5.90.21",
+    "@tanstack/react-query-devtools": "^5.96.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "ky": "^1.14.3",
@@ -45,5 +50,13 @@
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "packageManager": "yarn@1.22.22",
+  "volta": {
+    "node": "22.22.0",
+    "yarn": "1.22.22"
   }
 }

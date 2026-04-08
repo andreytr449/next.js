@@ -1,2 +1,2 @@
-export { clientEnv } from './env.client'
-export { serverEnv } from './env.server'
+export { envClient } from './env.client'
+export { envServer } from './env.server'

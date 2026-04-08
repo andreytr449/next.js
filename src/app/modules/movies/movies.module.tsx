@@ -1,15 +1,17 @@
 import { getTranslations } from 'next-intl/server'
+import { FC } from 'react'
 
-import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query'
+import { MovieListComponent } from '@/app/widgets/movie-list'
+import { Badge } from '@/pkg/theme/components/badge'
 
-import { getMovies } from '@/app/entities/api/movies'
-import { Badge } from '@/app/shared/ui'
-import { MovieList } from '@/app/widgets/movie-list'
-import { getQueryClient } from '@/pkg/query'
+// interface
+interface IProps {}
 
-export const MoviesModule = async ({ dehydratedState }: { dehydratedState: DehydratedState }) => {
+// component
+const MoviesModuleComponent: FC<Readonly<IProps>> = async () => {
   const t = await getTranslations('Items')
 
+  // render
   return (
     <main className='py-8 sm:py-16 lg:py-24'>
       <div className='mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-8'>
@@ -22,10 +24,10 @@ export const MoviesModule = async ({ dehydratedState }: { dehydratedState: Dehyd
 
           <p className='text-muted-foreground text-lg md:text-xl'>{t('description')}</p>
         </div>
-        <HydrationBoundary state={dehydratedState}>
-          <MovieList />
-        </HydrationBoundary>
+        <MovieListComponent />
       </div>
     </main>
   )
 }
+
+export default MoviesModuleComponent

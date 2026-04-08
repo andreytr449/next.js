@@ -1,14 +1,21 @@
 'use client'
 
-import { useRouter } from '@/pkg/locale'
 import { useTranslations } from 'next-intl'
+import type { FC } from 'react'
 import { useEffect, useState } from 'react'
 
 import { useAuthStore } from '@/app/shared/store'
+import { useRouter } from '@/pkg/locale'
 
 import { AuthCardComponent, LoginFormComponent, RegisterFormComponent } from './elements'
 
-export const AuthModule = () => {
+// interface
+interface IProps {}
+
+// component
+const AuthModuleComponent: FC<Readonly<IProps>> = (props) => {
+  const {} = props
+
   const router = useRouter()
   const { user } = useAuthStore()
 
@@ -24,6 +31,7 @@ export const AuthModule = () => {
 
   if (user) return null
 
+  // render
   return (
     <AuthCardComponent
       title={t('title')}
@@ -38,3 +46,5 @@ export const AuthModule = () => {
     </AuthCardComponent>
   )
 }
+
+export default AuthModuleComponent

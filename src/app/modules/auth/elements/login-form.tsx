@@ -1,20 +1,29 @@
 'use client'
 
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
-import { useRouter } from '@/pkg/locale'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { useAuthStore } from '@/app/shared/store/'
-import { Button, FormErrorText, Input, Label } from '@/app/shared/ui'
+import { FormErrorTextComponent } from '@/app/shared/components/form-error-text'
+import { useAuthStore } from '@/app/shared/store'
+import { createLoginSchema } from '@/app/shared/utilities/auth.validation'
+import { useRouter } from '@/pkg/locale'
+import { Button } from '@/pkg/theme/components/button'
+import { Input } from '@/pkg/theme/components/input'
+import { Label } from '@/pkg/theme/components/label'
 
 import { LoginFormData } from '../auth.interface'
-import { createLoginSchema } from '@/app/shared/lib'
 
-const LoginFormComponent = () => {
+// interface
+interface ILoginFormProps {}
+
+// component
+const LoginFormComponent: FC<Readonly<ILoginFormProps>> = (props) => {
+  const {} = props
+
   const router = useRouter()
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -40,6 +49,7 @@ const LoginFormComponent = () => {
     router.push('/items')
   }
 
+  // render
   return (
     <form onSubmit={handleSubmit(handleLogin)} className='space-y-4'>
       <div className='space-y-1'>
@@ -55,7 +65,7 @@ const LoginFormComponent = () => {
           placeholder={t('email-placeholder')}
         />
 
-        <FormErrorText message={errors.email?.message} />
+        <FormErrorTextComponent message={errors.email?.message} />
       </div>
 
       <div className='w-full space-y-1'>
@@ -73,7 +83,7 @@ const LoginFormComponent = () => {
             className='pr-9'
           />
 
-          <FormErrorText message={errors.password?.message} />
+          <FormErrorTextComponent message={errors.password?.message} />
 
           <Button
             variant='ghost'

@@ -1,1 +1,1 @@
-export { MoviesModule } from './movies.module'
+export { default as MoviesModuleComponent } from './movies.module'

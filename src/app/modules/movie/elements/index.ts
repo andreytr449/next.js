@@ -1,3 +1,3 @@
-export { BackButton } from './back-button'
-export { MovieBody } from './movie-body'
-export { MovieHero } from './movie-hero'
+export { default as BackButtonComponent } from './back-button'
+export { default as MovieBodyComponent } from './movie-body'
+export { default as MovieHeroComponent } from './movie-hero'

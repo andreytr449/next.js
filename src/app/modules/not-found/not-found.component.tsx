@@ -1,10 +1,17 @@
 import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
+import type { FC } from 'react'
 
 import { Link } from '@/pkg/locale'
-import { Button } from '@/app/shared/ui'
-import { getTranslations } from 'next-intl/server'
+import { Button } from '@/pkg/theme/components/button'
 
-const NotFound = async () => {
+// interface
+interface IProps {}
+
+// component
+const NotFoundComponent: FC<Readonly<IProps>> = async (props) => {
+  const {} = props
+
   const t = await getTranslations('NotFound')
 
   return (
@@ -34,4 +41,4 @@ const NotFound = async () => {
   )
 }
 
-export default NotFound
+export default NotFoundComponent
