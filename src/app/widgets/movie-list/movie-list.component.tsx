@@ -1,21 +1,34 @@
 'use client'
 
+import { FC } from 'react'
+
 import { useMoviesQuery } from '@/app/entities/api/movies'
-import { ErrorMessage, MovieListSkeleton } from '@/app/shared/ui'
+import { MovieListSkeleton } from '@/app/shared/components/movie-list-skeleton'
 
-import { MovieCard } from './elements'
+import { MovieCardComponent } from './elements'
 
-export const MovieList = () => {
+// interface
+interface IProps {}
+
+// component
+const MovieListComponent: FC<Readonly<IProps>> = (props) => {
+  const {} = props
+
   const { data, isLoading, error } = useMoviesQuery()
-  if (isLoading) return <MovieListSkeleton />
-  if (error) return <ErrorMessage message={error.message} />
+
+  if (error) throw new Error(error.message)
 
   const movies = data?.results
+
+  // render
   return (
     <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-      {movies &&
+      {isLoading ? (
+        <MovieListSkeleton />
+      ) : (
+        movies &&
         movies.map((movie) => (
-          <MovieCard
+          <MovieCardComponent
             key={'movie' + movie.id}
             adult={movie.adult}
             backdrop_path={movie.backdrop_path}
@@ -31,7 +44,10 @@ export const MovieList = () => {
             video={movie.video}
             vote_average={movie.vote_average}
           />
-        ))}
+        ))
+      )}
     </div>
   )
 }
+
+export default MovieListComponent

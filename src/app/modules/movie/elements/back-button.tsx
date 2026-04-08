@@ -1,8 +1,16 @@
 import { ChevronLeft } from 'lucide-react'
+import type { FC } from 'react'
 
 import { Link } from '@/pkg/locale'
 
-export const BackButton = () => {
+// interface
+interface IProps {}
+
+// component
+const BackButtonComponent: FC<Readonly<IProps>> = (props) => {
+  const {} = props
+
+  // render
   return (
     <Link
       href='/items'
@@ -12,3 +20,5 @@ export const BackButton = () => {
     </Link>
   )
 }
+
+export default BackButtonComponent

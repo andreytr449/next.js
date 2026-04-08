@@ -1,7 +1,9 @@
 import { AuthBackgroundShape, Logo } from '@/app/shared/assets'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/shared/ui'
+import { Button } from '@/pkg/theme/components/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/pkg/theme/components/card'
 
-interface AuthCardProps {
+// interface
+interface IAuthCardProps {
   title: string
   description: string
   footer: {
@@ -12,9 +14,11 @@ interface AuthCardProps {
   children: React.ReactNode
 }
 
-const AuthCardComponent = (props: AuthCardProps) => {
+// component
+const AuthCardComponent = (props: IAuthCardProps) => {
   const { title, description, footer, children } = props
 
+  // render
   return (
     <div className='relative flex h-auto min-h-screen items-center justify-center overflow-x-hidden px-4 py-10 sm:px-6 lg:px-8'>
       <div className='absolute'>
@@ -24,8 +28,10 @@ const AuthCardComponent = (props: AuthCardProps) => {
       <Card className='z-1 w-full border-none shadow-md sm:max-w-lg'>
         <CardHeader className='gap-6'>
           <Logo className='gap-3' />
+
           <div>
             <CardTitle className='mb-1.5 text-2xl'>{title}</CardTitle>
+
             <CardDescription className='text-base'>{description}</CardDescription>
           </div>
         </CardHeader>
@@ -36,9 +42,9 @@ const AuthCardComponent = (props: AuthCardProps) => {
 
             <p className='text-muted-foreground text-center'>
               {footer.text}{' '}
-              <button onClick={footer.onSwitch} className='text-card-foreground hover:underline'>
+              <Button onClick={footer.onSwitch} className='text-card-foreground hover:underline'>
                 {footer.linkText}
-              </button>
+              </Button>
             </p>
           </div>
         </CardContent>

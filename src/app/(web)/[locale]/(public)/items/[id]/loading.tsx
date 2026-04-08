@@ -1,5 +1,14 @@
-import { MovieDetailsSkeleton } from '@/app/shared/ui/skeleton'
+import { NextPage } from 'next'
 
-export default function MovieDetailsLoading() {
+import { MovieDetailsSkeleton } from '@/app/shared/components/movie-details-skeleton'
+
+// interface
+interface IProps {}
+
+// component
+const MovieDetailsLoading: NextPage<Readonly<IProps>> = () => {
+  // render
   return <MovieDetailsSkeleton />
 }
+
+export default MovieDetailsLoading

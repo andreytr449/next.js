@@ -1,1 +1,1 @@
-export { AuthButton } from './logout-button.component'
+export { default as AuthButtonComponent } from './logout-button.component'

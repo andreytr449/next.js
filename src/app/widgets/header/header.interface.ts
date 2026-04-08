@@ -1,4 +1,4 @@
-export interface NavigationItem {
+export interface INavigationItem {
   key: string
   href: string
 }

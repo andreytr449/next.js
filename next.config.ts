@@ -1,12 +1,15 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
+// i18n
 const withNextIntl = createNextIntlPlugin({
   requestConfig: './src/pkg/locale/request.ts',
   experimental: {
     createMessagesDeclaration: './translations/en.json',
   },
 })
+
+// config
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   expireTime: 604800,
@@ -17,6 +20,16 @@ const nextConfig: NextConfig = {
     },
   },
 
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: 'localhost', port: '4000' },
+    ],
+    minimumCacheTTL: 86400,
+    deviceSizes: [640, 1080, 1920],
+    imageSizes: [16, 64, 128],
+  },
+
   turbopack: {
     rules: {
       '*.svg': {
@@ -24,21 +37,6 @@ const nextConfig: NextConfig = {
         as: '*.js',
       },
     },
-  },
-
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'image.tmdb.org',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.shadcnstudio.com',
-      },
-    ],
   },
 
   webpack: (config) => {

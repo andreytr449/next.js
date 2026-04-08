@@ -1,2 +1,2 @@
-export { Header } from './header.component'
-export type { NavigationItem } from './header.interface'
+export { default as HeaderComponent } from './header.component'
+export type { INavigationItem } from './header.interface'

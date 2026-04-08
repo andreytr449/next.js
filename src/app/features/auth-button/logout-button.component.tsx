@@ -1,12 +1,19 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { FC } from 'react'
 
 import { useAuthStore } from '@/app/shared/store'
-import { Button } from '@/app/shared/ui'
 import { Link } from '@/pkg/locale'
+import { Button } from '@/pkg/theme/components/button'
 
-export const AuthButton = () => {
+// interface
+interface IProps {}
+
+// component
+const AuthButtonComponent: FC<Readonly<IProps>> = (props) => {
+  const {} = props
+
   const { logout, user } = useAuthStore()
 
   const t = useTranslations('Header')
@@ -18,9 +25,12 @@ export const AuthButton = () => {
       </Link>
     )
 
+  // render
   return (
     <Button onClick={logout} className='text-background text-xs font-medium'>
       {t('logout-btn')}
     </Button>
   )
 }
+
+export default AuthButtonComponent

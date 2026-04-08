@@ -1,5 +1,15 @@
-import { AuthModule } from '@/app/modules/auth'
+import type { NextPage } from 'next'
 
-export default function SignUp() {
-  return <AuthModule />
+import { AuthModuleComponent } from '@/app/modules/auth'
+
+// interface
+interface IProps {}
+
+// component
+const SignUp: NextPage<Readonly<IProps>> = (props) => {
+  const {} = props
+  // render
+  return <AuthModuleComponent />
 }
+
+export default SignUp

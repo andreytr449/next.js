@@ -1,1 +1,1 @@
-export { HomeModule } from './home.module'
+export { default as HomeModuleComponent } from './home.module'

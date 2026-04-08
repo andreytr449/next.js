@@ -3,7 +3,7 @@
 import { getLocale } from 'next-intl/server'
 
 import { Movie, MoviesResponse } from '@/app/entities/models'
-import { tmdbApi } from '@/pkg/query/ky-instance'
+import { tmdbApiFetcher } from '@/pkg/rest-api/fetcher'
 
 const localeToLanguage: Record<string, string> = {
   en: 'en-US',
@@ -14,7 +14,7 @@ export const getMovies = async (): Promise<MoviesResponse> => {
   const locale = await getLocale()
   const language = localeToLanguage[locale]
 
-  return tmdbApi
+  return tmdbApiFetcher
     .get('movie/now_playing', {
       searchParams: {
         language: language,
@@ -29,7 +29,7 @@ export const getMovieById = async (movieId: string): Promise<Movie> => {
   const locale = await getLocale()
   const language = localeToLanguage[locale]
 
-  return tmdbApi
+  return tmdbApiFetcher
     .get(`movie/${movieId}`, {
       searchParams: {
         language: language,
