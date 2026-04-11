@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import { FC } from 'react'
 
 import { TMDB_IMAGE_BASE } from '@/app/shared/constants'
@@ -16,10 +16,10 @@ interface IProps {
 }
 
 // component
-const MovieHeroComponent: FC<Readonly<IProps>> = async (props) => {
+const MovieHeroComponent: FC<Readonly<IProps>> = (props) => {
   const { backdrop_path, poster_path, tagline, runtime, original_language, title, genres } = props
 
-  const t = await getTranslations('MovieHero')
+  const t = useTranslations('MovieHero')
 
   // render
   return (
@@ -53,7 +53,7 @@ const MovieHeroComponent: FC<Readonly<IProps>> = async (props) => {
           <div className='flex flex-wrap gap-2'>
             {genres.map((g, index) => (
               <span
-                key={g.id + index}
+                key={g.id + g.name + index}
                 className='rounded-full border border-zinc-600 px-3 py-1 text-xs tracking-widest text-zinc-400 uppercase'
               >
                 {g.name}

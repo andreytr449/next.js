@@ -3,13 +3,11 @@
 import { getLocale } from 'next-intl/server'
 
 import { Movie, MoviesResponse } from '@/app/entities/models'
+import { localeToLanguage } from '@/app/shared/constants'
+import { IRestApiErrorResponse } from '@/app/shared/interfaces'
 import { tmdbApiFetcher } from '@/pkg/rest-api/fetcher'
 
-const localeToLanguage: Record<string, string> = {
-  en: 'en-US',
-  de: 'de-DE',
-}
-
+// get movies
 export const getMovies = async (): Promise<MoviesResponse> => {
   const locale = await getLocale()
   const language = localeToLanguage[locale]
@@ -17,23 +15,31 @@ export const getMovies = async (): Promise<MoviesResponse> => {
   return tmdbApiFetcher
     .get('movie/now_playing', {
       searchParams: {
-        language: language,
-        page: 1,
-        include_adult: false,
+        language,
+      },
+      next: {
+        revalidate: 3600,
       },
     })
     .json<MoviesResponse>()
 }
 
-export const getMovieById = async (movieId: string): Promise<Movie> => {
+// get movie by id
+export const getMovieById = async (movieId: string): Promise<Movie | null> => {
   const locale = await getLocale()
   const language = localeToLanguage[locale]
 
-  return tmdbApiFetcher
+  const response = await tmdbApiFetcher
     .get(`movie/${movieId}`, {
       searchParams: {
-        language: language,
+        language,
       },
     })
-    .json<Movie>()
+    .json<Movie | IRestApiErrorResponse>()
+
+  if ('success' in response && response.success === false) {
+    return null
+  }
+
+  return response as Movie
 }

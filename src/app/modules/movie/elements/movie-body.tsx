@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 
 import { InfoRowComponent } from '@/app/shared/components/info-row'
@@ -20,7 +20,7 @@ interface IProps {
 }
 
 // component
-const MovieBodyComponent: FC<Readonly<IProps>> = async (props) => {
+const MovieBodyComponent: FC<Readonly<IProps>> = (props) => {
   const {
     overview,
     status,
@@ -34,7 +34,7 @@ const MovieBodyComponent: FC<Readonly<IProps>> = async (props) => {
     production_companies,
   } = props
 
-  const t = await getTranslations('MovieBody')
+  const t = useTranslations('MovieBody')
 
   // render
   return (

@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 
+import { MovieListSkeleton } from '@/app/shared/components/movie-list-skeleton'
 import { MovieListComponent } from '@/app/widgets/movie-list'
 import { Badge } from '@/pkg/theme/components/badge'
 
@@ -24,7 +25,10 @@ const MoviesModuleComponent: FC<Readonly<IProps>> = async () => {
 
           <p className='text-muted-foreground text-lg md:text-xl'>{t('description')}</p>
         </div>
-        <MovieListComponent />
+
+        <Suspense fallback={<MovieListSkeleton />}>
+          <MovieListComponent />
+        </Suspense>
       </div>
     </main>
   )

@@ -4,7 +4,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import type { FC, ReactNode } from 'react'
 
-import { EAssetImage } from '@/app/shared/interfaces'
+import { EAssetImage, IParams } from '@/app/shared/interfaces'
 import { HeaderComponent } from '@/app/widgets/header'
 import { fontPrimary, fontSecondary } from '@/config/fonts'
 import { routing } from '@/pkg/locale'
@@ -13,9 +13,8 @@ import { RestApiProvider } from '@/pkg/rest-api'
 import '@/config/styles/global.css'
 
 // interface
-interface IProps {
+interface IProps extends IParams {
   children: ReactNode
-  params: Promise<{ locale: string }>
 }
 
 // static params
@@ -24,7 +23,7 @@ export const generateStaticParams = async () => {
 }
 
 // metadata
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: IParams): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Metadata.layout' })
   const favicon = EAssetImage.FAVICON
