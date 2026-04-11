@@ -1,10 +1,12 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+// user interface
 interface User {
   email: string
 }
 
+// auth state interface
 interface AuthState {
   user: User | null
   token: string | null
@@ -14,6 +16,7 @@ interface AuthState {
   logout: () => void
 }
 
+// auth store
 export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({

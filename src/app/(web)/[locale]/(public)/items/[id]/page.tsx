@@ -1,14 +1,17 @@
 import type { Metadata, NextPage } from 'next'
+import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 
-import { getMovieById } from '@/app/entities/api/movies/'
-import { MovieModuleComponent } from '@/app/modules/movie'
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
-import NotFoundMoviePage from '../not-found'
+import { getMovieById, moviesByIdQueryOptions } from '@/app/entities/api/movies/'
+import { MovieModuleComponent } from '@/app/modules/movie'
+import { IParams } from '@/app/shared/interfaces'
+import { getQueryClient } from '@/pkg/rest-api'
 
 // interface
-interface IProps {
-  params: Promise<{ id: string }>
+interface IProps extends IParams {
+  params: Promise<{ id: string; locale: string }>
 }
 
 // metadata
@@ -33,12 +36,23 @@ const MoviePage: NextPage<Readonly<IProps>> = async (props) => {
   const { params } = props
 
   const { id } = await params
-  const results = await getMovieById(id)
 
-  if (!results) return <NotFoundMoviePage />
+  const movie = await getMovieById(id)
+
+  if (!movie) notFound()
+
+  const queryClient = getQueryClient()
+
+  queryClient.setQueryData(moviesByIdQueryOptions(id).queryKey, movie)
+
+  const dehydratedState = dehydrate(queryClient)
 
   // render
-  return <MovieModuleComponent movie={results} />
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <MovieModuleComponent id={id} />
+    </HydrationBoundary>
+  )
 }
 
 export default MoviePage

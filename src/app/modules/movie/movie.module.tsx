@@ -1,22 +1,31 @@
+'use client'
+
 import type { FC } from 'react'
 
-import { Movie } from '@/app/entities/models'
+import { useMovieByIdQuery } from '@/app/entities/api/movies'
 
 import { BackButtonComponent, MovieBodyComponent, MovieHeroComponent } from './elements'
 
+import { NotFoundComponent } from '../not-found'
+
 // interface
 interface IProps {
-  movie: Movie
+  id: string
 }
 
 // component
-const MovieModuleComponent: FC<Readonly<IProps>> = async (props) => {
-  const { movie } = props
+const MovieModuleComponent: FC<Readonly<IProps>> = (props) => {
+  const { id } = props
+
+  const { data: movie } = useMovieByIdQuery(id)
+
+  if (!movie) return <NotFoundComponent />
 
   // render
   return (
     <div className='relative min-h-screen'>
       <BackButtonComponent />
+
       <MovieHeroComponent
         backdrop_path={movie.backdrop_path}
         poster_path={movie.poster_path}
@@ -26,6 +35,7 @@ const MovieModuleComponent: FC<Readonly<IProps>> = async (props) => {
         title={movie.title}
         genres={movie.genres}
       />
+
       <MovieBodyComponent
         overview={movie.overview}
         status={movie.status}

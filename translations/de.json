@@ -8,6 +8,18 @@
     "layout": {
       "title": "Film App",
       "description": "Jetzt laufende Filme entdecken"
+    },
+    "home": {
+      "title": "Startseite",
+      "description": "Jetzt laufende Filme entdecken"
+    },
+    "items": {
+      "title": "Artikelseite",
+      "description": "Jetzt laufende Filme entdecken"
+    },
+    "auth": {
+      "title": "Auth Seite",
+      "description": "Melde dich an, um deine Filmreise fortzusetzen."
     }
   },
   "NotFound": {

@@ -11,6 +11,18 @@ declare const messages: {
     "layout": {
       "title": "Movie App",
       "description": "Browse now playing movies"
+    },
+    "home": {
+      "title": "Home Page",
+      "description": "Browse now playing movies"
+    },
+    "items": {
+      "title": "Items Page",
+      "description": "Browse now playing movies"
+    },
+    "auth": {
+      "title": "Auth Page",
+      "description": "Sign in to continue your movie journey."
     }
   },
   "NotFound": {
