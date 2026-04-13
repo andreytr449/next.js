@@ -2,13 +2,12 @@
 
 import { getLocale } from 'next-intl/server'
 
-import { Movie, MoviesResponse } from '@/app/entities/models'
+import { TMovieResponse, TMoviesResponse } from '@/app/entities/models'
 import { localeToLanguage } from '@/app/shared/constants'
-import { IRestApiErrorResponse } from '@/app/shared/interfaces'
 import { tmdbApiFetcher } from '@/pkg/rest-api/fetcher'
 
 // get movies
-export const getMovies = async (): Promise<MoviesResponse> => {
+export const getMovies = async (): Promise<TMoviesResponse> => {
   const locale = await getLocale()
   const language = localeToLanguage[locale]
 
@@ -21,11 +20,11 @@ export const getMovies = async (): Promise<MoviesResponse> => {
         revalidate: 3600,
       },
     })
-    .json<MoviesResponse>()
+    .json<TMoviesResponse>()
 }
 
 // get movie by id
-export const getMovieById = async (movieId: string): Promise<Movie | null> => {
+export const getMovieById = async (movieId: string): Promise<TMovieResponse> => {
   const locale = await getLocale()
   const language = localeToLanguage[locale]
 
@@ -35,11 +34,7 @@ export const getMovieById = async (movieId: string): Promise<Movie | null> => {
         language,
       },
     })
-    .json<Movie | IRestApiErrorResponse>()
+    .json<TMovieResponse>()
 
-  if ('success' in response && response.success === false) {
-    return null
-  }
-
-  return response as Movie
+  return response
 }
