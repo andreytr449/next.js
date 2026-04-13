@@ -1,1 +1,1 @@
-export type { Movie, MovieResponse, MoviesResponse } from './movie.model'
+export type { IMovie, IMovieResponse, IMoviesResponse, TMovieResponse, TMoviesResponse } from './movie.model'

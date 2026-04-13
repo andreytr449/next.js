@@ -19,7 +19,7 @@ const MovieModuleComponent: FC<Readonly<IProps>> = (props) => {
 
   const { data: movie } = useMovieByIdQuery(id)
 
-  if (!movie) return <NotFoundComponent />
+  if (!movie || 'success' in movie) return <NotFoundComponent />
 
   // render
   return (

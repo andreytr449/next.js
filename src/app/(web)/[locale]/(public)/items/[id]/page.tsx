@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const { id } = await params
   const results = await getMovieById(id)
 
-  if (!results) {
+  if (!results || 'success' in results) {
     const t = await getTranslations('NotFoundMovie')
     return {
       title: t('label'),

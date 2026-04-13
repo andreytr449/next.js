@@ -4,6 +4,8 @@ import createMiddleware from 'next-intl/middleware'
 import { routing } from '@/pkg/locale'
 
 const handleI18n = createMiddleware(routing)
+
+// proxy
 export default function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl
 

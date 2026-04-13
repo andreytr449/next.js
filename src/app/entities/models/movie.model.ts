@@ -1,4 +1,6 @@
-export interface Movie {
+import { IRestApiErrorResponse } from '@/app/shared/interfaces'
+
+export interface IMovie {
   id: number
   title: string
   original_title: string
@@ -25,14 +27,17 @@ export interface Movie {
   production_companies: { name: string; origin_country: string }[]
 }
 
-export interface MoviesResponse {
+export interface IMoviesResponse {
   page: number
-  results: Movie[]
+  results: IMovie[]
   total_pages: number
   total_results: number
 }
 
-export interface MovieResponse {
+export interface IMovieResponse {
   success: boolean
-  results: Movie
+  results: IMovie
 }
+
+export type TMovieResponse = IMovie | IRestApiErrorResponse
+export type TMoviesResponse = IMoviesResponse | IRestApiErrorResponse

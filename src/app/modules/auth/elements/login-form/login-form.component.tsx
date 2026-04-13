@@ -15,7 +15,7 @@ import { Button } from '@/pkg/theme/components/button'
 import { Input } from '@/pkg/theme/components/input'
 import { Label } from '@/pkg/theme/components/label'
 
-import { LoginFormData } from '../auth.interface'
+import { TLoginFormData } from './login-form.interface'
 
 // interface
 interface ILoginFormProps {}
@@ -31,7 +31,7 @@ const LoginFormComponent: FC<Readonly<ILoginFormProps>> = (props) => {
 
   const t = useTranslations('Auth.form')
 
-  const { handleSubmit, register, formState } = useForm<LoginFormData>({
+  const { handleSubmit, register, formState } = useForm<TLoginFormData>({
     resolver: zodResolver(createLoginSchema(t)),
   })
 
@@ -39,7 +39,7 @@ const LoginFormComponent: FC<Readonly<ILoginFormProps>> = (props) => {
 
   const errors = formState.errors
 
-  const handleLogin = (data: LoginFormData) => {
+  const handleLogin = (data: TLoginFormData) => {
     setIsLoading(true)
 
     login({ email: data.email }, 'user-token')

@@ -1,5 +1,7 @@
+'use client'
+
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import type { FC } from 'react'
 
 import { Link } from '@/pkg/locale'
@@ -9,10 +11,10 @@ import { Button } from '@/pkg/theme/components/button'
 interface IProps {}
 
 // component
-const NotFoundComponent: FC<Readonly<IProps>> = async (props) => {
+const NotFoundComponent: FC<Readonly<IProps>> = (props) => {
   const {} = props
 
-  const t = await getTranslations('NotFound')
+  const t = useTranslations('NotFound')
 
   return (
     <>

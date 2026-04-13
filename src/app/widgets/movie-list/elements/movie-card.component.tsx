@@ -2,7 +2,7 @@ import { ArrowRightIcon, CalendarDaysIcon, StarIcon } from 'lucide-react'
 import Image from 'next/image'
 import type { FC } from 'react'
 
-import { Movie } from '@/app/entities/models'
+import { IMovie } from '@/app/entities/models'
 import { TMDB_IMAGE_BASE } from '@/app/shared/constants'
 import { Link } from '@/pkg/locale'
 import { Badge } from '@/pkg/theme/components/badge'
@@ -12,7 +12,7 @@ import { CardContent } from '@/pkg/theme/components/card'
 
 // interface
 interface IMovieCardProps extends Pick<
-  Movie,
+  IMovie,
   | 'id'
   | 'title'
   | 'overview'

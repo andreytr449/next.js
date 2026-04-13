@@ -15,7 +15,7 @@ import { Button } from '@/pkg/theme/components/button'
 import { Input } from '@/pkg/theme/components/input'
 import { Label } from '@/pkg/theme/components/label'
 
-import { RegisterFormData } from '../auth.interface'
+import { TRegisterFormData } from './register-form.interface'
 
 // interface
 interface IRegisterFormProps {}
@@ -31,7 +31,7 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const t = useTranslations('Auth.form')
-  const { handleSubmit, register, formState } = useForm<RegisterFormData>({
+  const { handleSubmit, register, formState } = useForm<TRegisterFormData>({
     resolver: zodResolver(createRegisterSchema(t)),
   })
 
@@ -39,7 +39,7 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
 
   const errors = formState.errors
 
-  const handleRegister = (data: RegisterFormData) => {
+  const handleRegister = (data: TRegisterFormData) => {
     setIsLoading(true)
 
     login({ email: data.email }, 'user-token')
@@ -49,6 +49,7 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
     router.push('/items')
   }
 
+  // render
   return (
     <form className='space-y-4' onSubmit={handleSubmit(handleRegister)}>
       <div className='space-y-1'>

@@ -15,7 +15,7 @@ const MovieListComponent: FC<Readonly<IProps>> = (props) => {
 
   const { data, error } = useMoviesQuery()
 
-  if (error) throw new Error(error.message)
+  if (error || 'success' in data) throw new Error(error?.message || 'Failed to fetch movies')
 
   const movies = data?.results || []
 
