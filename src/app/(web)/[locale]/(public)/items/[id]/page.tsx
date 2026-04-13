@@ -4,14 +4,47 @@ import { getTranslations } from 'next-intl/server'
 
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
-import { getMovieById, moviesByIdQueryOptions } from '@/app/entities/api/movies/'
+import { getMovieById, getPopularMovies, moviesByIdQueryOptions } from '@/app/entities/api/movies'
 import { MovieModuleComponent } from '@/app/modules/movie'
 import { IParams } from '@/app/shared/interfaces'
+import { routing } from '@/pkg/locale'
 import { getQueryClient } from '@/pkg/rest-api'
 
 // interface
 interface IProps extends IParams {
   params: Promise<{ id: string; locale: string }>
+}
+
+// generateStaticParams
+export const generateStaticParams = async () => {
+  const PAGES_TO_FETCH = 5
+
+  const paths: { locale: string; id: string }[] = []
+
+  try {
+    for (const locale of routing.locales) {
+      const pagePromises = Array.from({ length: PAGES_TO_FETCH }, (_, index) => getPopularMovies(index + 1, locale))
+
+      const pagesResponses = await Promise.all(pagePromises)
+
+      const localeMovies = pagesResponses.flatMap((response) => {
+        if ('results' in response && Array.isArray(response.results)) {
+          return response.results
+        }
+        return []
+      })
+
+      const localeParams = localeMovies.map((movie) => ({
+        locale: locale,
+        id: movie.id.toString(),
+      }))
+
+      paths.push(...localeParams)
+    }
+    return paths
+  } catch (_) {
+    return []
+  }
 }
 
 // metadata
@@ -21,6 +54,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 
   if (!results || 'success' in results) {
     const t = await getTranslations('NotFoundMovie')
+
     return {
       title: t('label'),
     }
