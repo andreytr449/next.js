@@ -11,7 +11,7 @@ export const getMovies = async (): Promise<TMoviesResponse> => {
   const locale = await getLocale()
   const language = localeToLanguage[locale]
 
-  return tmdbApiFetcher
+  const response = await tmdbApiFetcher
     .get('movie/now_playing', {
       searchParams: {
         language,
@@ -21,6 +21,8 @@ export const getMovies = async (): Promise<TMoviesResponse> => {
       },
     })
     .json<TMoviesResponse>()
+
+  return response
 }
 
 // get movie by id
@@ -35,6 +37,25 @@ export const getMovieById = async (movieId: string): Promise<TMovieResponse> => 
       },
     })
     .json<TMovieResponse>()
+
+  return response
+}
+
+// get popular movies
+export const getPopularMovies = async (page: number, explicitLocale = 'en'): Promise<TMoviesResponse> => {
+  const language = localeToLanguage[explicitLocale]
+
+  const response = await tmdbApiFetcher
+    .get('movie/popular', {
+      searchParams: {
+        language,
+        page,
+      },
+      next: {
+        revalidate: 3600,
+      },
+    })
+    .json<TMoviesResponse>()
 
   return response
 }
