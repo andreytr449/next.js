@@ -1,2 +1,2 @@
-export { AuthBackgroundShape } from './auth-background-shape'
-export { Logo } from './logo'
+export { default as AuthBackgroundShape } from './background-figure.svg'
+export { default as Logo } from './logo.svg'

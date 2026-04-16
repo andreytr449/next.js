@@ -22,8 +22,6 @@ interface ILoginFormProps {}
 
 // component
 const LoginFormComponent: FC<Readonly<ILoginFormProps>> = (props) => {
-  const {} = props
-
   const router = useRouter()
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)

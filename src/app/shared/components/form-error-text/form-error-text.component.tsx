@@ -17,6 +17,7 @@ const FormErrorTextComponent: FC<Readonly<IProps>> = (props) => {
   return (
     <p className={`flex items-center gap-1.5 text-sm text-red-500 ${className ?? ''}`}>
       <AlertCircle className='size-3.5 shrink-0' />
+
       <span>{message}</span>
     </p>
   )

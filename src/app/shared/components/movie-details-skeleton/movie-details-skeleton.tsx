@@ -7,8 +7,6 @@ interface IProps {}
 
 // component
 const MovieDetailsSkeleton: FC<Readonly<IProps>> = (props) => {
-  const {} = props
-
   // render
   return (
     <div className='min-h-screen bg-black font-sans text-white'>

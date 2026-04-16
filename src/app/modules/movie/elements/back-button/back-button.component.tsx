@@ -8,8 +8,6 @@ interface IProps {}
 
 // component
 const BackButtonComponent: FC<Readonly<IProps>> = (props) => {
-  const {} = props
-
   // render
   return (
     <Link

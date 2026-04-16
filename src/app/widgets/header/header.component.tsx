@@ -14,8 +14,6 @@ import { navigationData } from './header.constant'
 interface IProps {}
 
 const HeaderComponent: FC<Readonly<IProps>> = async (props) => {
-  const {} = props
-
   const t = await getTranslations('Header')
 
   // render

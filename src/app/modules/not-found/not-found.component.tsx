@@ -12,8 +12,6 @@ interface IProps {}
 
 // component
 const NotFoundComponent: FC<Readonly<IProps>> = (props) => {
-  const {} = props
-
   const t = useTranslations('NotFound')
 
   return (

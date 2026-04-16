@@ -17,7 +17,9 @@ const ErrorMessageComponent: FC<Readonly<IProps>> = (props) => {
   return (
     <div className='flex flex-col items-center gap-3 py-12 text-center'>
       <AlertCircleIcon className='text-destructive size-10' />
+
       <p className='text-muted-foreground text-sm'>{message}</p>
+
       {onRetry && (
         <Button variant='outline' onClick={onRetry}>
           Try again
