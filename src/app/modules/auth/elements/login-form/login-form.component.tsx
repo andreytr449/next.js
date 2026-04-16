@@ -4,9 +4,11 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { signIn } from '@/app/entities/api/auth'
 import { FormErrorTextComponent } from '@/app/shared/components/form-error-text'
 import { useAuthStore } from '@/app/shared/store'
 import { createLoginSchema } from '@/app/shared/utilities/auth.validation'
@@ -37,14 +39,21 @@ const LoginFormComponent: FC<Readonly<ILoginFormProps>> = (props) => {
 
   const errors = formState.errors
 
-  const handleLogin = (data: TLoginFormData) => {
+  const handleLogin = async (data: TLoginFormData) => {
     setIsLoading(true)
 
-    login({ email: data.email }, 'user-token')
+    const response = await signIn({ email: data.email, password: data.password })
 
+    if (response.success) {
+      login({ email: response.user.email, username: response.user.username! }, response.token)
+
+      localStorage.setItem('token', response.token)
+
+      router.push('/items')
+    } else {
+      toast.error(response.error)
+    }
     setIsLoading(false)
-
-    router.push('/items')
   }
 
   // render

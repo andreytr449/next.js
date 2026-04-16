@@ -23,6 +23,10 @@ declare const messages: {
     "auth": {
       "title": "Auth Page",
       "description": "Sign in to continue your movie journey."
+    },
+    "profile": {
+      "title": "Profile Page",
+      "description": "Manage your profile and settings."
     }
   },
   "NotFound": {
@@ -62,7 +66,8 @@ declare const messages: {
     "home": "Home",
     "items": "Items",
     "button": "Sign up",
-    "logout-btn": "Logout"
+    "logout-btn": "Logout",
+    "profile-btn": "Profile"
   },
   "Auth": {
     "register": {
@@ -101,6 +106,12 @@ declare const messages: {
     "subtitle": "Without the noise.",
     "description": "Find movies, check ratings and discover new films — fast and simple.",
     "button": "Browse films"
+  },
+  "Profile": {
+    "title": "Profile",
+    "email": "Email",
+    "username": "Username",
+    "logout": "Logout"
   }
 };
 export default messages;

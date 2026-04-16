@@ -4,9 +4,11 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { signUp } from '@/app/entities/api/auth/auth.api'
 import { FormErrorTextComponent } from '@/app/shared/components/form-error-text'
 import { useAuthStore } from '@/app/shared/store'
 import { createRegisterSchema } from '@/app/shared/utilities/auth.validation'
@@ -24,11 +26,13 @@ interface IRegisterFormProps {}
 const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
   const router = useRouter()
 
+  // state
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const t = useTranslations('Auth.form')
+
   const { handleSubmit, register, formState } = useForm<TRegisterFormData>({
     resolver: zodResolver(createRegisterSchema(t)),
   })
@@ -37,14 +41,21 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
 
   const errors = formState.errors
 
-  const handleRegister = (data: TRegisterFormData) => {
+  const handleRegister = async (data: TRegisterFormData) => {
     setIsLoading(true)
 
-    login({ email: data.email }, 'user-token')
+    const response = await signUp({ email: data.email, password: data.password, username: data.name })
 
+    if (response.success) {
+      login({ email: response.user.email, username: response.user.username! }, response.token)
+
+      localStorage.setItem('token', response.token)
+
+      router.push('/items')
+    } else {
+      toast.error(response.error)
+    }
     setIsLoading(false)
-
-    router.push('/items')
   }
 
   // render
@@ -91,6 +102,7 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
             className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none hover:bg-transparent'
           >
             {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
+
             <span className='sr-only'>{isPasswordVisible ? 'Hide password' : 'Show password'}</span>
           </Button>
         </div>

@@ -4,18 +4,19 @@ import * as z from 'zod'
 type TranslationFn = (key: string, values?: Record<string, string | number | Date>) => string
 
 // create login schema
-export const createLoginSchema = (t: TranslationFn) =>
-  z.object({
+export const createLoginSchema = (t: TranslationFn) => {
+  return z.object({
     email: z.email(t('validation.invalidEmail')),
     password: z
       .string()
       .min(8, t('validation.minLength', { min: 8 }))
       .max(64, t('validation.maxLength', { max: 64 })),
   })
+}
 
 // create register schema
-export const createRegisterSchema = (t: TranslationFn) =>
-  z
+export const createRegisterSchema = (t: TranslationFn) => {
+  return z
     .object({
       name: z
         .string()
@@ -32,3 +33,4 @@ export const createRegisterSchema = (t: TranslationFn) =>
       message: t('validation.passwordsDoNotMatch'),
       path: ['confirmPassword'],
     })
+}

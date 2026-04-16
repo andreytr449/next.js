@@ -8,8 +8,8 @@ import { IParams } from '@/app/shared/interfaces'
 interface IProps extends IParams {}
 
 // metadata
-export async function generateMetadata({ params }: IProps): Promise<Metadata> {
-  const { locale } = await params
+export async function generateMetadata(props: IProps): Promise<Metadata> {
+  const { locale } = await props.params
   const t = await getTranslations({ locale, namespace: 'Metadata.auth' })
 
   return {
