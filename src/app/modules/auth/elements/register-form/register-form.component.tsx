@@ -16,6 +16,7 @@ import { Input } from '@/pkg/theme/components/input'
 import { Label } from '@/pkg/theme/components/label'
 
 import { TRegisterFormData } from './register-form.interface'
+import { signUp } from '@/app/entities/api/auth/auth.api'
 
 // interface
 interface IRegisterFormProps {}
@@ -37,14 +38,20 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
 
   const errors = formState.errors
 
-  const handleRegister = (data: TRegisterFormData) => {
+  const handleRegister = async (data: TRegisterFormData) => {
     setIsLoading(true)
 
-    login({ email: data.email }, 'user-token')
+    const response = await signUp({ email: data.email, password: data.password, username: data.name })
 
+    if (response.success) {
+      login({ email: response.user.email, username: response.user.username! }, response.token)
+
+      router.push('/items')
+    } else {
+      // TODO: add toaster
+      console.log(response.error)
+    }
     setIsLoading(false)
-
-    router.push('/items')
   }
 
   // render
