@@ -2,16 +2,33 @@
 
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 
 import { TAuthResponse, TSignInInput, TSignUpInput } from '@/app/entities/models'
 import { SALT_ROUNDS } from '@/app/shared/constants'
+import { isRateLimited } from '@/app/shared/utilities'
 import { SignInInputSchema, SignUpInputSchema } from '@/app/shared/utilities/dto'
 import { envServer } from '@/config/env'
 import { createServerClient } from '@/pkg/supabase/server'
 
+const signInAttempts = new Set<string>()
+const signUpAttempts = new Set<string>()
+
 // sign in
 export const signIn = async (data: TSignInInput): Promise<TAuthResponse> => {
+  const headerStore = await headers()
+  const ip = headerStore.get('x-forwarded-for') || 'unknown-ip'
+
+  const isBlocked = isRateLimited(signInAttempts, ip, 5, 60000)
+
+  if (isBlocked) {
+    return {
+      success: false,
+      status_code: 429,
+      error: 'Too many login attempts.',
+    }
+  }
+
   // validate input fields
   const validatedFields = SignInInputSchema.safeParse(data)
 
@@ -50,6 +67,19 @@ export const signIn = async (data: TSignInInput): Promise<TAuthResponse> => {
 
 // create account
 export const signUp = async (data: TSignUpInput): Promise<TAuthResponse> => {
+  const headerStore = await headers()
+  const ip = headerStore.get('x-forwarded-for') || 'unknown-ip'
+
+  const isBlocked = isRateLimited(signUpAttempts, ip, 3, 300000)
+
+  if (isBlocked) {
+    return {
+      success: false,
+      status_code: 429,
+      error: 'Too many registration attempts.',
+    }
+  }
+
   // validate input fields
   const validatedFields = SignUpInputSchema.safeParse(data)
 

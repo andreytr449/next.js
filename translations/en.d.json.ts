@@ -23,6 +23,10 @@ declare const messages: {
     "auth": {
       "title": "Auth Page",
       "description": "Sign in to continue your movie journey."
+    },
+    "profile": {
+      "title": "Profile Page",
+      "description": "Manage your profile and settings."
     }
   },
   "NotFound": {
