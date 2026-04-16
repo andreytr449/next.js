@@ -5,10 +5,10 @@ import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
 
 import { TAuthResponse, TSignInInput, TSignUpInput } from '@/app/entities/models'
+import { SALT_ROUNDS } from '@/app/shared/constants'
 import { SignInInputSchema, SignUpInputSchema } from '@/app/shared/utilities/dto'
 import { envServer } from '@/config/env'
 import { createServerClient } from '@/pkg/supabase/server'
-import { SALT_ROUNDS } from '@/app/shared/constants'
 
 // sign in
 export const signIn = async (data: TSignInInput): Promise<TAuthResponse> => {

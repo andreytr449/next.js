@@ -46,6 +46,8 @@ const LoginFormComponent: FC<Readonly<ILoginFormProps>> = (props) => {
     if (response.success) {
       login({ email: response.user.email, username: response.user.username! }, response.token)
 
+      localStorage.setItem('token', response.token)
+
       router.push('/items')
     } else {
       // TODO: add toaster

@@ -31,6 +31,7 @@ export const useAuthStore = create<IAuthState>()(
     }),
     {
       name: 'auth-storage',
+      version: 1,
     },
   ),
 )

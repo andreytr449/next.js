@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { signUp } from '@/app/entities/api/auth/auth.api'
 import { FormErrorTextComponent } from '@/app/shared/components/form-error-text'
 import { useAuthStore } from '@/app/shared/store'
 import { createRegisterSchema } from '@/app/shared/utilities/auth.validation'
@@ -16,7 +17,6 @@ import { Input } from '@/pkg/theme/components/input'
 import { Label } from '@/pkg/theme/components/label'
 
 import { TRegisterFormData } from './register-form.interface'
-import { signUp } from '@/app/entities/api/auth/auth.api'
 
 // interface
 interface IRegisterFormProps {}
@@ -25,11 +25,13 @@ interface IRegisterFormProps {}
 const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
   const router = useRouter()
 
+  // state
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const t = useTranslations('Auth.form')
+
   const { handleSubmit, register, formState } = useForm<TRegisterFormData>({
     resolver: zodResolver(createRegisterSchema(t)),
   })
@@ -45,6 +47,8 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
 
     if (response.success) {
       login({ email: response.user.email, username: response.user.username! }, response.token)
+
+      localStorage.setItem('token', response.token)
 
       router.push('/items')
     } else {
@@ -98,6 +102,7 @@ const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
             className='text-muted-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-l-none hover:bg-transparent'
           >
             {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
+
             <span className='sr-only'>{isPasswordVisible ? 'Hide password' : 'Show password'}</span>
           </Button>
         </div>

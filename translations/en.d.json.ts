@@ -62,7 +62,8 @@ declare const messages: {
     "home": "Home",
     "items": "Items",
     "button": "Sign up",
-    "logout-btn": "Logout"
+    "logout-btn": "Logout",
+    "profile-btn": "Profile"
   },
   "Auth": {
     "register": {
@@ -101,6 +102,12 @@ declare const messages: {
     "subtitle": "Without the noise.",
     "description": "Find movies, check ratings and discover new films — fast and simple.",
     "button": "Browse films"
+  },
+  "Profile": {
+    "title": "Profile",
+    "email": "Email",
+    "username": "Username",
+    "logout": "Logout"
   }
 };
 export default messages;

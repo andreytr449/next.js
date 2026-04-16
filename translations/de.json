@@ -60,7 +60,8 @@
     "home": "Startseite",
     "items": "Artikel",
     "button": "Registrieren",
-    "logout-btn": "Abmelden"
+    "logout-btn": "Abmelden",
+    "profile-btn": "Profil"
   },
   "Auth": {
     "register": {
@@ -99,5 +100,11 @@
     "subtitle": "Ohne den Lärm.",
     "description": "Finde Filme, sieh dir Bewertungen an und entdecke neue Streifen — schnell und einfach.",
     "button": "Filme durchsuchen"
+  },
+  "Profile": {
+    "title": "Profil",
+    "email": "E-Mail",
+    "username": "Benutzername",
+    "logout": "Abmelden"
   }
 }
