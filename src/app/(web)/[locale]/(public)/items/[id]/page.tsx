@@ -10,6 +10,9 @@ import { IParams } from '@/app/shared/interfaces'
 import { routing } from '@/pkg/locale'
 import { getQueryClient } from '@/pkg/rest-api'
 
+// revalidate
+export const revalidate = 3600
+
 // interface
 interface IProps extends IParams {
   params: Promise<{ id: string; locale: string }>
@@ -50,6 +53,7 @@ export const generateStaticParams = async () => {
 // metadata
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const { id } = await params
+
   const results = await getMovieById(id)
 
   if (!results || 'success' in results) {
@@ -77,7 +81,7 @@ const MoviePage: NextPage<Readonly<IProps>> = async (props) => {
 
   const queryClient = getQueryClient()
 
-  queryClient.setQueryData(moviesByIdQueryOptions(id).queryKey, movie)
+  await queryClient.fetchQuery(moviesByIdQueryOptions(id))
 
   const dehydratedState = dehydrate(queryClient)
 

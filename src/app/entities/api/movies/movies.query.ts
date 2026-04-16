@@ -4,7 +4,7 @@ import { moviesByIdQueryOptions, moviesQueryOptions } from './movies.options'
 
 // use queries
 export const useMoviesQuery = () => {
-  return useSuspenseQuery(moviesQueryOptions)
+  return useSuspenseQuery(moviesQueryOptions())
 }
 
 export const useMovieByIdQuery = (movieId: string) => {

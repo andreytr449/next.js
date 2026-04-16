@@ -7,15 +7,15 @@ import { useEffect, useState } from 'react'
 import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'
 
-import { AuthCardComponent, LoginFormComponent, RegisterFormComponent } from './elements'
+import { AuthCardComponent } from './elements/auth-card'
+import { LoginFormComponent } from './elements/login-form'
+import { RegisterFormComponent } from './elements/register-form'
 
 // interface
 interface IProps {}
 
 // component
 const AuthModuleComponent: FC<Readonly<IProps>> = (props) => {
-  const {} = props
-
   const router = useRouter()
   const { user } = useAuthStore()
 

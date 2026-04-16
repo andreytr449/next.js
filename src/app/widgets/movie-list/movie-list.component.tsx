@@ -4,15 +4,13 @@ import type { FC } from 'react'
 
 import { useMoviesQuery } from '@/app/entities/api/movies'
 
-import { MovieCardComponent } from './elements'
+import { MovieCardComponent } from './elements/movie-card'
 
 // interface
 interface IProps {}
 
 // component
 const MovieListComponent: FC<Readonly<IProps>> = (props) => {
-  const {} = props
-
   const { data, error } = useMoviesQuery()
 
   if (error || 'success' in data) throw new Error(error?.message || 'Failed to fetch movies')

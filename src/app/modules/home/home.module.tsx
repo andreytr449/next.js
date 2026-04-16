@@ -8,8 +8,6 @@ interface IProps {}
 
 // component
 const HomeModuleComponent: FC<Readonly<IProps>> = async (props) => {
-  const {} = props
-
   const t = await getTranslations('Home')
 
   // render

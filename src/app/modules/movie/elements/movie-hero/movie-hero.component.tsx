@@ -4,16 +4,10 @@ import { FC } from 'react'
 
 import { TMDB_IMAGE_BASE } from '@/app/shared/constants'
 
+import { IMovieHeroProps } from './movie-hero.interface'
+
 // interface
-interface IProps {
-  backdrop_path: string
-  poster_path: string
-  tagline: string
-  runtime: string
-  original_language: string
-  title: string
-  genres: { id: number; name: string }[]
-}
+interface IProps extends IMovieHeroProps {}
 
 // component
 const MovieHeroComponent: FC<Readonly<IProps>> = (props) => {

@@ -22,8 +22,6 @@ interface IRegisterFormProps {}
 
 // component
 const RegisterFormComponent: FC<Readonly<IRegisterFormProps>> = (props) => {
-  const {} = props
-
   const router = useRouter()
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)

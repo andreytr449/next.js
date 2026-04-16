@@ -12,8 +12,6 @@ interface IProps {}
 
 // component
 const AuthButtonComponent: FC<Readonly<IProps>> = (props) => {
-  const {} = props
-
   const { logout, user } = useAuthStore()
 
   const t = useTranslations('Header')

@@ -8,13 +8,16 @@ import { MoviesModuleComponent } from '@/app/modules/movies'
 import { IParams } from '@/app/shared/interfaces'
 import { getQueryClient } from '@/pkg/rest-api'
 
+// revalidate
 export const revalidate = 3600
 
 // interface
 interface IProps extends IParams {}
 
 // metadata
-export async function generateMetadata({ params }: IProps): Promise<Metadata> {
+export async function generateMetadata(props: IProps): Promise<Metadata> {
+  const { params } = props
+
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Metadata.items' })
 
@@ -34,7 +37,7 @@ const MoviesPage: NextPage<Readonly<IProps>> = async (props) => {
 
   const queryClient = getQueryClient()
 
-  await queryClient.prefetchQuery(moviesQueryOptions)
+  await queryClient.prefetchQuery(moviesQueryOptions())
 
   const dehydratedState = dehydrate(queryClient)
 

@@ -4,7 +4,9 @@ import type { FC } from 'react'
 
 import { useMovieByIdQuery } from '@/app/entities/api/movies'
 
-import { BackButtonComponent, MovieBodyComponent, MovieHeroComponent } from './elements'
+import { BackButtonComponent } from './elements/back-button'
+import { MovieBodyComponent } from './elements/movie-body'
+import { MovieHeroComponent } from './elements/movie-hero'
 
 import { NotFoundComponent } from '../not-found'
 
