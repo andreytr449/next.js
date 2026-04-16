@@ -9,6 +9,7 @@ import { HeaderComponent } from '@/app/widgets/header'
 import { fontPrimary, fontSecondary } from '@/config/fonts'
 import { routing } from '@/pkg/locale'
 import { RestApiProvider } from '@/pkg/rest-api'
+import { Toaster } from '@/pkg/theme/ui/sonner'
 
 import '@/config/styles/global.css'
 
@@ -74,6 +75,7 @@ const LocaleLayout: FC<Readonly<IProps>> = async (props: IProps) => {
           <RestApiProvider>
             <HeaderComponent />
             {children}
+            <Toaster />
           </RestApiProvider>
         </NextIntlClientProvider>
       </body>

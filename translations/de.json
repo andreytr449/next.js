@@ -20,6 +20,10 @@
     "auth": {
       "title": "Auth Seite",
       "description": "Melde dich an, um deine Filmreise fortzusetzen."
+    },
+    "profile": {
+      "title": "Profil Seite",
+      "description": "Verwalte dein Profil und deine Einstellungen."
     }
   },
   "NotFound": {

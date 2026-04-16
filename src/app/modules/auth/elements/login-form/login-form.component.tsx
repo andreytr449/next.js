@@ -4,6 +4,7 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -50,8 +51,7 @@ const LoginFormComponent: FC<Readonly<ILoginFormProps>> = (props) => {
 
       router.push('/items')
     } else {
-      // TODO: add toaster
-      console.log(response.error)
+      toast.error(response.error)
     }
     setIsLoading(false)
   }

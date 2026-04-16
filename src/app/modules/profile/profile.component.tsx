@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useEffect, type FC } from 'react'
+import { type FC, useEffect } from 'react'
 
 import { useAuthStore } from '@/app/shared/store'
 import { useRouter } from '@/pkg/locale'

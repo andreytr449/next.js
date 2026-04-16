@@ -51,8 +51,8 @@ export const generateStaticParams = async () => {
 }
 
 // metadata
-export async function generateMetadata({ params }: IProps): Promise<Metadata> {
-  const { id } = await params
+export async function generateMetadata(params: IProps): Promise<Metadata> {
+  const { id } = await params.params
 
   const results = await getMovieById(id)
 
