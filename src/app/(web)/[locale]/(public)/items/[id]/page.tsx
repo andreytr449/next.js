@@ -22,7 +22,7 @@ interface IProps extends IParams {
 export const generateStaticParams = async () => {
   const PAGES_TO_FETCH = 5
 
-  const paths: { locale: string; id: string }[] = []
+  const paths: string[] = []
 
   try {
     for (const locale of routing.locales) {
@@ -37,11 +37,7 @@ export const generateStaticParams = async () => {
         return []
       })
 
-      const localeParams = localeMovies.map((movie) => ({
-        locale: locale,
-        id: movie.id.toString(),
-      }))
-
+      const localeParams = localeMovies.map((movie) => movie.id.toString())
       paths.push(...localeParams)
     }
     return paths
@@ -81,7 +77,7 @@ const MoviePage: NextPage<Readonly<IProps>> = async (props) => {
 
   const queryClient = getQueryClient()
 
-  await queryClient.fetchQuery(moviesByIdQueryOptions(id))
+  await queryClient.prefetchQuery(moviesByIdQueryOptions(id))
 
   const dehydratedState = dehydrate(queryClient)
 

@@ -10,6 +10,7 @@ interface IProps extends IParams {}
 // metadata
 export async function generateMetadata(params: IProps): Promise<Metadata> {
   const { locale } = await params.params
+
   const t = await getTranslations({ locale, namespace: 'Metadata.profile' })
 
   return {

@@ -10,6 +10,7 @@ interface IProps extends IParams {}
 // metadata
 export const generateMetadata = async ({ params }: IProps): Promise<Metadata> => {
   const { locale } = await params
+
   const t = await getTranslations({ locale, namespace: 'Metadata.home' })
 
   return {
@@ -20,8 +21,6 @@ export const generateMetadata = async ({ params }: IProps): Promise<Metadata> =>
 
 // page
 const Page: NextPage<Readonly<IProps>> = (props: IProps) => {
-  const {} = props
-
   // render
   return <HomeModuleComponent />
 }

@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server'
-import { FC, Suspense } from 'react'
+import { type FC, Suspense } from 'react'
 
 import { MovieListSkeleton } from '@/app/shared/components/movie-list-skeleton'
 import { MovieListComponent } from '@/app/widgets/movie-list'

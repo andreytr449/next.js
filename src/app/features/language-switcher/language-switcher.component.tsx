@@ -44,6 +44,7 @@ const LanguageDropdownComponent: FC<Readonly<IProps>> = (props) => {
       <DropdownMenuTrigger suppressHydrationWarning asChild data-testid='language-switcher'>
         {trigger}
       </DropdownMenuTrigger>
+
       <DropdownMenuContent className='w-50' align={align || 'end'}>
         <DropdownMenuRadioGroup value={language} onValueChange={handleLocaleChange}>
           {Object.entries(LOCALES).map(([locale, label]) => (
