@@ -1,4 +1,4 @@
-import { AuthBackgroundShape, Logo } from '@/app/shared/assets'
+import { AuthBackgroundShape, Logo } from '@/app/shared/assets/icon'
 import { Button } from '@/pkg/theme/components/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/pkg/theme/components/card'
 
