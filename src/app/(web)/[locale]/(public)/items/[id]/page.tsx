@@ -22,7 +22,7 @@ interface IProps extends IParams {
 export const generateStaticParams = async () => {
   const PAGES_TO_FETCH = 5
 
-  const paths: string[] = []
+  const paths: { id: string; }[] = []
 
   try {
     for (const locale of routing.locales) {
@@ -37,7 +37,10 @@ export const generateStaticParams = async () => {
         return []
       })
 
-      const localeParams = localeMovies.map((movie) => movie.id.toString())
+      const localeParams = localeMovies.map((movie) => ({
+        id: movie.id.toString(),
+      }))
+      
       paths.push(...localeParams)
     }
     return paths
