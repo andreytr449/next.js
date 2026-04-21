@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import { AuthButtonComponent } from '@/app/features/auth-button'
 import { LanguageDropdownComponent } from '@/app/features/language-switcher'
-import { Logo } from '@/app/shared/assets'
+import { Logo } from '@/app/shared/assets/icon'
 import { Link } from '@/pkg/locale'
 import { Button } from '@/pkg/theme/components/button'
 

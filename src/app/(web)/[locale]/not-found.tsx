@@ -7,8 +7,6 @@ interface IProps {}
 
 // component
 const NotFound: NextPage<Readonly<IProps>> = (props) => {
-  const {} = props
-
   // render
   return <NotFoundComponent />
 }

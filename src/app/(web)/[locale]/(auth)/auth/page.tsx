@@ -10,6 +10,7 @@ interface IProps extends IParams {}
 // metadata
 export async function generateMetadata(props: IProps): Promise<Metadata> {
   const { locale } = await props.params
+
   const t = await getTranslations({ locale, namespace: 'Metadata.auth' })
 
   return {
@@ -20,8 +21,6 @@ export async function generateMetadata(props: IProps): Promise<Metadata> {
 
 // component
 const AuthPage: NextPage<Readonly<IProps>> = (props) => {
-  const {} = props
-
   // render
   return <AuthModuleComponent />
 }
